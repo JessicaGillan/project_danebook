@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user
     unless user_signed_in?
       flash[:danger] = "You must sign in."
-      params[:forwarding_url] = request.referer
+      store_location
       redirect_to login_path
     end
   end
@@ -26,9 +26,9 @@ class ApplicationController < ActionController::Base
   end
 
   def sign_out
-    @current_user.nil
+    @current_user.auth_token = nil
+    @current_user = nil
     cookies.delete(:auth_token)
-    user.auth_token = nil
   end
 
   def current_user

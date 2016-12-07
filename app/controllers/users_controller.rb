@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
-  skip_before_action :authenticate_user, only: [:new, :create]
+  before_action      :require_current_user, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_user,    only: [:new, :create]
 
   def new
     @user = User.new
@@ -20,9 +20,19 @@ class UsersController < ApplicationController
   def show
   end
 
+  def index
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
+
+  def require_current_user
+    unless current_user.id = params[:id]
+      flash[:danger] = "Sorry, you're not authorized for that."
+      redirect_to :back
+    end
   end
 end

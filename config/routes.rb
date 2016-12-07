@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'login', to: 'session#new'
+  get 'login', to: 'sessions#new'
+  get 'logout', to: 'sessions#destroy'
 
   root 'users#index'
 
