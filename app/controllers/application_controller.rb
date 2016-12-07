@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user
     unless user_signed_in?
       flash[:danger] = "You must sign in."
+      params[:forwarding_url] = request.referer
       redirect_to login_path
     end
   end

@@ -10,18 +10,22 @@ class User < ApplicationRecord
                     presence: true
 
   before_create :generate_token
-
+  before_save   :downcase_email
   has_secure_password
 
   def generate_token
     begin
-      auth_token = SecureRandom.urlsafe_base64
-    end while User.exists?(auth_token: auth_token)
+      self.auth_token = SecureRandom.urlsafe_base64
+    end while User.exists?(auth_token: self.auth_token)
   end
 
   def regenerate_token
-    auth_token = nil
+    self.auth_token = nil
     generate_token
     save!
+  end
+
+  def downcase_email
+    self.email = email.downcase
   end
 end
