@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  
+
+  skip_before_action :authenticate_user, only: [:new, :create]
+
   def new
     @user = User.new
   end
@@ -8,8 +10,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       params[:remember] ? permanent_sign_in(@user) : sign_in(@user)
-      flash[:success] = "Welcome to the Danebook, #{@user.username}."
-      redirect to @user
+      flash[:success] = "Welcome to the Danebook."
+      redirect_to @user
     else
       render :new
     end

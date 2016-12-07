@@ -1,7 +1,18 @@
 class User < ApplicationRecord
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
+
+  validates :password, length: { minimum: 6 },
+                       presence: true,
+                       allow_nil: true
+
+  validates :email, uniqueness: { case_sensitive: false },
+                    format: { with: VALID_EMAIL_REGEX },
+                    presence: true
+
   before_create :generate_token
+
   has_secure_password
-  
+
   def generate_token
     begin
       auth_token = SecureRandom.urlsafe_base64

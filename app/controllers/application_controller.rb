@@ -1,7 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action :authenticate_user
+
   private
+
+  def authenticate_user
+    unless user_signed_in?
+      flash[:danger] = "You must sign in."
+      redirect_to login_path
+    end
+  end
 
   def sign_in(user)
     user.regenerate_token
@@ -29,6 +38,6 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  helper_method :current_user 
-  helper_method :user_signed_in? 
+  helper_method :current_user
+  helper_method :user_signed_in?
 end
