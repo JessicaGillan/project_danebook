@@ -1,30 +1,21 @@
-<%= form_for @user do |f| %>
-  <div class="form-group">
-    <%= f.label      :first_name %>
-    <%= f.text_field :first_name, class: 'form-control' %>
+<div class="row">
+  <div class="col-sm-7 col-sm-offset-1">
+    <div class="sign_up_text">
+      <h2><%= sign_up_page_content[:tagline] %><a href="#"></a></h2>
+        <ul>
+          <% sign_up_page_content[:details].each do |detail| %>
+            <li>
+              <%= detail %>
+            </li>
+          <% end %>
+        </ul>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label      :last_name %>
-    <%= f.text_field :last_name, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label       :email %>
-    <%= f.email_field :email, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label          :password %>
-    <%= f.password_field :password, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label          :password_confirmation %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= check_box_tag :remember, '1', true %>
-    <%= label_tag     :remember, 'Keep me logged in' %>
-  </div>
+  <div class="col-sm-4">
 
-  <div class="form-group">
-    <%= f.submit "Sign Up", class: 'btn btn-primary'%>
+    <h1>Sign Up!</h1>
+
+    <%= render partial: 'sign_up_form', locals: { user: @user } %>
+
   </div>
-<% end %>
+</div>

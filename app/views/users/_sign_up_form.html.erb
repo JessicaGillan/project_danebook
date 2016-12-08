@@ -1,0 +1,37 @@
+
+<%= simple_form_for(user, html: { class: 'form-horizontal' } )  do |f| %>
+
+  <div class="row">
+    <div class="col-sm-5">
+      <%= f.input :first_name, placeholder: sign_up_placeholders[:first_name],
+                               label: false,
+                               item_wrapper_class: 'text-inline' %>
+    </div>
+    <div class="col-sm-6 col-sm-offset-1">
+      <%= f.input :last_name, placeholder: sign_up_placeholders[:last_name],
+                              label: false,
+                              item_wrapper_class: 'text-inline' %>
+    </div>
+  </div>
+
+
+  <%= f.input :email,     placeholder: sign_up_placeholders[:email],
+                          label: false %>
+
+  <%= f.input :password,  placeholder: sign_up_placeholders[:password],
+                          label: false %>
+
+  <%= f.input :password_confirmation,
+                          placeholder: sign_up_placeholders[:password_confirmation],
+                          label: false %>
+
+  <%= f.input :birthday %>
+
+  <%= f.input :gender,    collection: User.genders.keys.map(&:humanize),
+                          as: :radio_buttons,
+                          item_wrapper_class: 'radio-inline',
+                          label: false %>
+
+  <%= f.button :submit,   class: "btn-success", id: "btn-cta" %>
+
+<% end %>

@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208003052) do
+ActiveRecord::Schema.define(version: 20161208191752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
-    t.date     "birthday"
     t.string   "college"
     t.string   "hometown"
     t.string   "current_location"
@@ -34,9 +33,11 @@ ActiveRecord::Schema.define(version: 20161208003052) do
     t.string   "password_digest", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "auth_token"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "auth_token",      null: false
+    t.string   "first_name",      null: false
+    t.string   "last_name",       null: false
+    t.date     "birthday",        null: false
+    t.integer  "gender"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end

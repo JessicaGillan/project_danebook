@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
 
+  enum gender: [:male, :female]
+
   validates :password, length: { minimum: 6 },
                        presence: true,
                        allow_nil: true
@@ -17,8 +19,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
 
   has_secure_password
-
-
 
   def generate_token
     begin
