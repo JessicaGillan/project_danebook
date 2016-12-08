@@ -11,7 +11,13 @@ class User < ApplicationRecord
 
   before_create :generate_token
   before_save   :downcase_email
+
+  has_one :profile, dependent: :destroy, inverse_of: :user
+  accepts_nested_attributes_for :profile
+  
   has_secure_password
+
+
 
   def generate_token
     begin

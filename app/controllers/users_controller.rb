@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       params[:remember] ? permanent_sign_in(@user) : sign_in(@user)
       flash[:success] = "Welcome to the Danebook."
-      redirect_to @user
+      redirect_to new_user_profile_path(@user)
     else
       render :new
     end
