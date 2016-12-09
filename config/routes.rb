@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'users#new'
 
   resources :users do
-    resources :profiles, only: [:new, :edit, :create, :update]
+    resource :profile, only: [:new, :edit, :create, :update]
   end
   resource  :session
 end

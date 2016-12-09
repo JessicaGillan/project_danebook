@@ -25,9 +25,12 @@
                           placeholder: sign_up_placeholders[:password_confirmation],
                           label: false %>
 
-  <%= f.input :birthday %>
+  <%= f.input :birthday,  start_year: Date.today.year - 90,
+                          end_year: Date.today.year,
+                          order: [:month, :day, :year] %>
 
   <%= f.input :gender,    collection: User.genders.keys.map(&:humanize),
+                          value_method: :downcase,
                           as: :radio_buttons,
                           item_wrapper_class: 'radio-inline',
                           label: false %>

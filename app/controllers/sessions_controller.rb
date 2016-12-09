@@ -6,12 +6,13 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_email(params[:email].downcase)
+
     if @user && @user.authenticate(params[:password])
       params[:remember] ? permanent_sign_in(@user) : sign_in(@user)
       flash[:success] = "Signed in successfully."
       redirect_back_or(@user)
     else
-      flash.now[:danger] = "Invalid information."
+      flash[:danger] = "Invalid information." 
       render :new
     end
   end
@@ -20,5 +21,9 @@ class SessionsController < ApplicationController
     sign_out
     flash[:success] = "Successfully signed out."
     redirect_to root_path
+  end
+
+  def show
+    # TODO: handle redirect_to login
   end
 end

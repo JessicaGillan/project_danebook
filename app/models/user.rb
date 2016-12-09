@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   enum gender: [:male, :female]
 
+  validates :first_name, :last_name, presence: true
+
   validates :password, length: { minimum: 6 },
                        presence: true,
                        allow_nil: true
@@ -13,10 +15,8 @@ class User < ApplicationRecord
 
   before_create :generate_token
   before_save   :downcase_email
-  after_create  :generate_profile
 
   has_one :profile, dependent: :destroy, inverse_of: :user
-  accepts_nested_attributes_for :profile
 
   has_secure_password
 
@@ -34,9 +34,5 @@ class User < ApplicationRecord
 
   def downcase_email
     self.email = email.downcase
-  end
-
-  def generate_profile
-    self.profile.create
   end
 end

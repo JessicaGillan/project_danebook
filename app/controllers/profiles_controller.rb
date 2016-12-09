@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
 
   def edit
     @user = User.find( params[:user_id] )
-    @profile = @user.profile
+    @profile = @user.profile.create
   end
 
   def update
@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
 
     if @profile.update( profile_params )
       flash[:success] = "Profile updated!"
-      redirect_to 
+      redirect_to
     else
 
     end
