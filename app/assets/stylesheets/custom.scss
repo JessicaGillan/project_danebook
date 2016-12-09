@@ -6,6 +6,7 @@ a{
   font-size: 1.25em;
 }
 
+
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:active,
@@ -56,13 +57,26 @@ a{
     border-radius: 0px;
 }
 
-#login-nav{
+.navbar-nav li {
+  margin-right: 15px;
+  line-height: 50px;
+}
+
+#logged-out-nav, #logged-in-nav {
   background-color: $brand-primary;
   border-color: #2660b0;
   margin-bottom: 0 -15px;
+  color: #FFF;
+  font-size: 1.25em;
+
+   #log-out-link {
+     font-size: 0.7em;
+   }
   a{
     color: #FFF;
-    font-size: 1.25em;
+  }
+  a:hover {
+    text-decoration: underline;
   }
 }
 

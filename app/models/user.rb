@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
 
-  enum gender: [:male, :female]
+  has_one :profile, dependent: :destroy, inverse_of: :user
+  accepts_nested_attributes_for :profile
 
-  validates :first_name, :last_name, presence: true
+  has_secure_password
 
   validates :password, length: { minimum: 6 },
                        presence: true,
@@ -15,10 +16,6 @@ class User < ApplicationRecord
 
   before_create :generate_token
   before_save   :downcase_email
-
-  has_one :profile, dependent: :destroy, inverse_of: :user
-
-  has_secure_password
 
   def generate_token
     begin

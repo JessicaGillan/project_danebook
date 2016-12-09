@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_user, except: [:destroy]
+  skip_before_action :require_logged_in, except: [:destroy]
 
   def new
   end
@@ -8,22 +8,22 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:email].downcase)
 
     if @user && @user.authenticate(params[:password])
-      params[:remember] ? permanent_sign_in(@user) : sign_in(@user)
+      params[:remember] ? permanent_log_in(@user) : log_in(@user)
       flash[:success] = "Signed in successfully."
       redirect_back_or(@user)
     else
-      flash[:danger] = "Invalid information." 
+      flash[:danger] = "Invalid information."
       render :new
     end
   end
 
   def destroy
-    sign_out
+    log_out
     flash[:success] = "Successfully signed out."
     redirect_to root_path
   end
 
   def show
-    # TODO: handle redirect_to login
+    redirect_to login_path
   end
 end

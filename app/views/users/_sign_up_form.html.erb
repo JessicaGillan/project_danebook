@@ -1,18 +1,19 @@
 
 <%= simple_form_for(user, html: { class: 'form-horizontal' } )  do |f| %>
-
-  <div class="row">
-    <div class="col-sm-5">
-      <%= f.input :first_name, placeholder: sign_up_placeholders[:first_name],
-                               label: false,
-                               item_wrapper_class: 'text-inline' %>
+  <%= f.simple_fields_for(:profile, html: { class: 'form-horizontal' } ) do |profile_form| %>
+    <div class="row">
+      <div class="col-sm-5">
+        <%= profile_form.input :first_name, placeholder: sign_up_placeholders[:first_name],
+                                 label: false,
+                                 item_wrapper_class: 'text-inline' %>
+      </div>
+      <div class="col-sm-6 col-sm-offset-1">
+        <%= profile_form.input :last_name, placeholder: sign_up_placeholders[:last_name],
+                                label: false,
+                                item_wrapper_class: 'text-inline' %>
+      </div>
     </div>
-    <div class="col-sm-6 col-sm-offset-1">
-      <%= f.input :last_name, placeholder: sign_up_placeholders[:last_name],
-                              label: false,
-                              item_wrapper_class: 'text-inline' %>
-    </div>
-  </div>
+  <% end %>
 
 
   <%= f.input :email,     placeholder: sign_up_placeholders[:email],
@@ -25,15 +26,19 @@
                           placeholder: sign_up_placeholders[:password_confirmation],
                           label: false %>
 
-  <%= f.input :birthday,  start_year: Date.today.year - 90,
-                          end_year: Date.today.year,
-                          order: [:month, :day, :year] %>
+  <%= f.simple_fields_for(:profile, html: { class: 'form-horizontal' } ) do |profile_form| %>
+    <%= profile_form.input :birthday,  start_year: Date.today.year - 90,
+                            end_year: Date.today.year,
+                            order: [:month, :day, :year] %>
 
-  <%= f.input :gender,    collection: User.genders.keys.map(&:humanize),
-                          value_method: :downcase,
-                          as: :radio_buttons,
-                          item_wrapper_class: 'radio-inline',
-                          label: false %>
+    <%= profile_form.input :gender,    collection: Profile.gender_options.keys.map(&:humanize),
+                            value_method: :downcase,
+                            as: :radio_buttons,
+                            item_wrapper_class: 'radio-inline',
+                            label: false %>
+  <% end %>
+
+
 
   <%= f.button :submit,   class: "btn-success", id: "btn-cta" %>
 
