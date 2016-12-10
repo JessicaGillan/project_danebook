@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resource  :session
 
   resources :posts do
-    resources :likes, :defaults => { :likable => 'Post' }
+    resources :likes, :defaults => { :likable => 'Post' },
+                      only: [:index, :create, :destroy]
   end
 end

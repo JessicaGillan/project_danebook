@@ -1,0 +1,5 @@
+<% if likable.likes.pluck(:liker_id).include? current_user.id %>
+  <%= link_to "Unlike", post_like_path( likable, current_user ), method: :delete %>
+<% else %>
+  <%= link_to "Like", post_likes_path( likable, ), method: :post %>
+<% end %>

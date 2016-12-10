@@ -2,6 +2,8 @@
 
 <div class="card post">
   <div class="card-body">
+
+    <!-- Author and time posted header -->
     <header class="post-header">
       <img class="post-thumbnail" src="images/cersie.jpg">
       <p>
@@ -11,17 +13,30 @@
         <span class="time faded">Posted on <time><%= post.created_at %></time></span>
         </p>
     </header>
+
+    <!-- Post Body -->
     <p class="post-content"><%= post.body %></p>
   </div>
+
+  <!-- Footer -->
   <div class="card-footer">
-    <ul class="post-actions underlined">
-      <li class="like"><a href="#">Like</a></li>
-      <li><a href="#">Comment</a></li>
-      <% if current_user.id == post.author.id %>
-       <li class="delete-post"><%= link_to "Delete", user_post_path(post.author, post), method: :delete %></li>
-      <% end %>
-    </ul>
+    <!-- Action Links -->
+    <div>
+      <ul class="post-actions underlined">
+        <li class="like"><%= render partial: 'shared/like_link',
+                                    locals:  { likable: post }   %></li>
+        <li><a href="#">Comment</a></li>
+        <% if current_user.id == post.author.id %>
+         <li class="delete-post"><%= link_to "Delete", user_post_path(post.author, post), method: :delete %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <!-- Likes -->
+    <%= list_of_likes( post ) %>
+
   </div>
+
 </div>
 
 <% end %>
