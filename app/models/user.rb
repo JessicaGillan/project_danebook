@@ -8,6 +8,16 @@ class User < ApplicationRecord
   has_many :likes,    foreign_key: :liker_id,  dependent: :destroy
   has_many :comments, foreign_key: :author_id, dependent: :nullify
 
+  has_many :initiated_friendings, foreign_key: :friender_id,
+                                  class_name: "Friending"
+  has_many :friended_users,       through: :initiated_friendings,
+                                  source:  :friend_recipient
+
+  has_many :received_friendings, foreign_key: :friended_id,
+                                 class_name:  "Friending"
+  has_many :users_friended_by,   through: :received_friendings,
+                                 source:  :friend_initiator
+
   has_secure_password
 
   validates :password, length: { minimum: 6 },
@@ -35,5 +45,9 @@ class User < ApplicationRecord
 
   def downcase_email
     self.email = email.downcase
+  end
+
+  def first_name
+    profile.first_name
   end
 end

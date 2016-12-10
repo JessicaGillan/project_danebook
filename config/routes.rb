@@ -23,4 +23,6 @@ Rails.application.routes.draw do
     resources :likes, :defaults => { likable: 'Comment' },
                       only: [:index, :create, :destroy]
   end
+
+  resources :friendings, only: [:create, :destroy, :index]
 end

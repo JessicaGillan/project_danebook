@@ -1,41 +1,8 @@
 <main>
 
   <!-- Top Profile Banner -->
-  <section id="profile-banner">
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <div class="banner-wrapper">
-          <%= image_tag 'quokka.png', alt: "Profile Image" %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <nav class="navbar navbar-default">
-          <div class="col-sm-2 col-sm-offset-3">
-            <h4><%= "#{@user.profile.first_name} #{@user.profile.last_name}" %></h4>
-          </div>
-          <div class="col-sm-6">
-            <ul class="nav navbar-nav ">
-              <li><%= link_to "Timeline", user_path(@user) %></li>
-              <li><%= link_to "About", user_profile_path(@user) %></li>
-              <li><a href="#">Photos</a></li>
-              <li><a href="#">Friends</a></li>
-            </ul>
-          </div>
-          <div class="col-sm-1">
-            <ul class="nav navbar-nav navbar-right">
-              <% if current_user.id == @user.id %>
-                <li><%= link_to "Edit Profile", edit_user_profile_path( current_user ) %></li>
-              <% end %>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </section>
-
+  <%= render partial: 'users/profile_top_banner', locals: { user: @user } %>
+  
   <!-- Timeline: Main Content -->
   <section id="profile-content" class="no-border">
     <div id="profile-content-body">
