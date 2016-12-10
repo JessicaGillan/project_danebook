@@ -29,6 +29,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    if current_user.id == @user.id
+     @post = @user.posts.build
+    end
   end
 
   def destroy
@@ -53,11 +56,11 @@ class UsersController < ApplicationController
     end
 
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by_id(params[:id])
     end
 
     def require_current_user
-      unless current_user.id == params[:id]
+      unless current_user.id == params[:id].to_i
         flash[:danger] = "Dude, you're not authorized for that."
         redirect_to :back
       end

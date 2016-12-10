@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy, inverse_of: :user
   accepts_nested_attributes_for :profile
 
+  has_many :posts, foreign_key: :author_id, dependent: :nullify
+  has_many :likes, foreign_key: :liker_id, dependent: :destroy
+
   has_secure_password
 
   validates :password, length: { minimum: 6 },

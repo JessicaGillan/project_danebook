@@ -2,8 +2,12 @@
 $brand-primary: #317be2;
 
 a{
-  color: #555;
+  color: #FFF !important;
   font-size: 1.25em;
+}
+
+ul {
+  list-style: none;
 }
 
 
@@ -79,7 +83,12 @@ a{
     text-decoration: underline;
   }
 }
-
+#tagline {
+  height: 75px;
+}
+#about-me {
+  height: 200px;
+}
 #profile-banner{
   .banner-wrapper {
     background-image: url(../assets/castle.jpg);
@@ -94,7 +103,11 @@ a{
           z-index:1;
         }
   }
-  .navbar-right a{
+  a {
+    color: #555 !important;
+  }
+
+  a:hover {
     text-decoration: underline;
   }
 }

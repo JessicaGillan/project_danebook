@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   root 'users#new'
 
   resources :users do
-    resource :profile, only: [:show, :new, :edit, :create, :update]
+    resource  :profile, only: [:show, :new, :edit, :create, :update]
+    resources :posts
   end
+
   resource  :session
+
+  resources :posts do
+    resources :likes, :defaults => { :likable => 'Post' }
+  end
 end

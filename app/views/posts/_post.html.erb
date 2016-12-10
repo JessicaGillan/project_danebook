@@ -1,0 +1,27 @@
+<% if post.persisted? %>
+
+<div class="card post">
+  <div class="card-body">
+    <header class="post-header">
+      <img class="post-thumbnail" src="images/cersie.jpg">
+      <p>
+        <span class="name underlined">
+          <a href="#0"><%= "#{post.author.profile.first_name} #{post.author.profile.last_name}" %></a>
+        </span><br/>
+        <span class="time faded">Posted on <time><%= post.created_at %></time></span>
+        </p>
+    </header>
+    <p class="post-content"><%= post.body %></p>
+  </div>
+  <div class="card-footer">
+    <ul class="post-actions underlined">
+      <li class="like"><a href="#">Like</a></li>
+      <li><a href="#">Comment</a></li>
+      <% if current_user.id == post.author.id %>
+       <li class="delete-post"><%= link_to "Delete", user_post_path(post.author, post), method: :delete %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<% end %>
