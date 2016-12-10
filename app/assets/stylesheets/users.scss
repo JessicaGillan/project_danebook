@@ -9,6 +9,7 @@ $light-green: #e6eedd;
 $med-green: #1f7a29;
 $dark-green: #0d5916;
 $light-blue: #6690e9;
+$bs-grey: #f6f6f6; // bootstrap grey
 
 .light-border {
   border: 1px solid #ccc;
@@ -48,7 +49,7 @@ html {
   @extend .light-border;
   border-bottom: 0;
   width: 100%;
-  background: $light-blue;
+  background: $bs-grey;
   text-align: center;
   padding: 7px;
 
@@ -168,7 +169,7 @@ html {
 
 .card-footer {
   @extend .light-border;
-  background: $light-blue;
+  background: $bs-grey;
   padding: 7px;
   border-top: 0;
 }

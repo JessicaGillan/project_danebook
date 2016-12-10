@@ -1,8 +1,11 @@
 // Bootstrap Colors
 $brand-primary: #317be2;
+$blue-accent: #2b78e4;
+$white: #fff;
+
 
 a{
-  color: #FFF !important;
+  color: $blue-accent;
   font-size: 1.25em;
 }
 

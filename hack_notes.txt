@@ -1,0 +1,7 @@
+https://guarded-plateau.herokuapp.com/users/456/profile/ ->
+error when access nonexistent profile
+
+blank sign up gives no feed back, about section words to live by and about me push
+together when blank
+
+update profile stays on update profile when submitted
