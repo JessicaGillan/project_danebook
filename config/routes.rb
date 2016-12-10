@@ -13,7 +13,14 @@ Rails.application.routes.draw do
   resource  :session
 
   resources :posts do
-    resources :likes, :defaults => { :likable => 'Post' },
+    resources :likes,    :defaults => { likable: 'Post' },
+                         only: [:index, :create, :destroy]
+    resources :comments, :defaults => { commentable: 'Post'},
+                         only: [:index, :create, :destroy]
+  end
+
+  resources :comments do
+    resources :likes, :defaults => { likable: 'Comment' },
                       only: [:index, :create, :destroy]
   end
 end

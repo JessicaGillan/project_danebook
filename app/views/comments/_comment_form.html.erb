@@ -1,0 +1,13 @@
+<!-- Submit a Comment -->
+<div class="card">
+
+  <%= form_for [commentable, comment] do |f| %>
+    <div class="card-body" id="comment-input-card-body">
+      <%= f.text_area :body, placeholder: "Write a comment..." %>
+    </div>
+    <div class="card-footer" id="comment-submit-footer">
+      <%= link_to "Cancel", '#' %>
+      <%= f.submit "Comment", class: "btn btn-primary", id: "comment-submit-button" %>
+    </div>
+  <% end %>
+</div>

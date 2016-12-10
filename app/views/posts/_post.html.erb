@@ -37,6 +37,14 @@
 
   </div>
 
+  <!-- Comments  -->
+  <%= render post.comments %>
+
+  <!-- Comment Form -->
+  <%= render partial: 'comments/comment_form',
+             locals:  { commentable: post,
+                        comment:     post.comments.build }%>
+
 </div>
 
 <% end %>
