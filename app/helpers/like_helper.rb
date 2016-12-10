@@ -27,8 +27,10 @@ module LikeHelper
     if likes.count == 2
         "and " + (link_to "#{first_liker.profile.first_name} #{first_liker.profile.last_name}",
                user_profile_path( first_liker )).html_safe + " like this."
+    elsif likes.pluck(:liker_id).include? current_user.id
+      "and #{likes.count - 1} others like this."
     else
-      "and #{likes.count} others like this."
+      "#{likes.count} people like this."
     end
   end
 end
