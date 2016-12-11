@@ -3,24 +3,12 @@ $brand-primary: #317be2;
 $blue-accent: #2b78e4;
 $white: #fff;
 
-
-a{
-  color: $blue-accent;
-  font-size: 1.25em;
-}
-
 ul {
   list-style: none;
 }
 
-
-.btn-primary,
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary:visited,
-.btn-primary:focus {
-    background-color: $brand-primary;
-    border-color: #8064A2;
+.navbar-default .navbar-nav > li > .btn {
+  color: $white;
 }
 
 #main_content {
@@ -92,7 +80,9 @@ ul {
 #about-me {
   height: 200px;
 }
+
 #profile-banner{
+  width: 100%;
   .banner-wrapper {
     background-image: url(../assets/castle.jpg);
     background-repeat: no-repeat;
@@ -105,13 +95,6 @@ ul {
           top: 215px;
           z-index:1;
         }
-  }
-  a {
-    color: #555 !important;
-  }
-
-  a:hover {
-    text-decoration: underline;
   }
 }
 

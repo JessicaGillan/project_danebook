@@ -1,149 +1,167 @@
-<main>
 
-  <!-- Top Profile Banner -->
-  <%= render partial: 'users/profile_top_banner', locals: { user: @user } %>
-  
-  <!-- Timeline: Main Content -->
-  <section id="profile-content" class="no-border">
-    <div id="profile-content-body">
-      <div id="timeline-row" class="row">
-        <div id="timeline-left" class="col-sm-4">
+<!-- Top Profile Banner -->
+<%= render partial: 'users/profile_top_banner', locals: { user: @user } %>
 
-          <!-- Side Card: About -->
-          <div class="card">
-            <header class="card-header">
-              <h3>About</h3>
-            </header>
-            <div class="card-body">
-              <table class="table">
-                <tbody>
-                <tr>
-                  <td class="bold">Birthday:</td>
-                  <td>273 AC</td>
-                </tr>
-                <tr>
-                  <td class="bold">College:</td>
-                  <td>Casterly High</td>
-                </tr>
-                <tr>
-                  <td class="bold">Hometown:</td>
-                  <td>Casterly Rock</td>
-                </tr>
-                <tr>
-                  <td class="bold">Currently Lives:</td>
-                  <td>Meereen</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+<!-- Timeline: Main Content -->
+<section class="row">
 
-          <!-- Side Card: Photos -->
-          <div class="card">
-            <header class="card-header">
-              <h3>Photos</h3>
-            </header>
-            <div class="card-body">
-              <div id="card-photos">
-                <div>
-                  <img src="images/tyrion1.png">
-                </div>
-                <div>
-                  <img src="images/tyrion2.jpg">
-                </div>
-                <div>
-                  <img src="images/tyrion3.jpg">
-                </div>
-                <div>
-                  <img src="images/tyrion4.jpg">
-                </div>
-                <div>
-                  <img src="images/tyrion5.jpg">
-                </div>
-                <div>
-                  <img src="images/tyrion6.png">
-                </div>
-                <div>
-                  <img src="images/tyrion7.jpg">
-                </div>
-                <div>
-                  <img src="images/tyrion8.jpg">
-                </div>
-                <div>
-                  <img src="images/tyrion9.jpg">
-                </div>
-              </div>
-              <div class="link underlined">
-                <a href="photos.html">See more photos</a>
-              </div>
-            </div>
-          </div>
+  <!-- LEFT -->
+  <aside class="col-sm-5">
+    <div class="row">
 
-          <!-- Side Card: Friends -->
-          <div class="card">
-            <header class="card-header">
-              <h3>Friends (4,142)</h3>
-            </header>
-            <div class="card-body">
-              <div id="card-photos">
-                <div>
-                  <img src="images/dany.jpg">
-                  <a href="#" class="underlined"><p>Daenerys Targaryen</p></a>
-                </div>
-                <div>
-                  <img src="images/jonsnow.jpg">
-                  <a href="#" class="underlined"><p>Jon Snow</p></a>
-                </div>
-                <div>
-                  <img src="images/mormont.jpg">
-                  <a href="#" class="underlined"><p>Jorah Mormont</p></a>
-                </div>
-                <div>
-                  <img src="images/cersie.jpg">
-                  <a href="#" class="underlined"><p>Cersei Lannister</p></a>
-                </div>
-                <div>
-                  <img src="images/sansa.jpg">
-                  <a href="#" class="underlined"><p>Sansa Stark</p></a>
-                </div>
-                <div>
-                  <img src="images/varys.jpg">
-                  <a href="#" class="underlined"><p>Lord Varys</p></a>
-                </div>
-              </div>
-              <div class="link underlined">
-                <a href="friends.html">See more friends</a>
-              </div>
-            </div>
+      <!-- ABOUT -->
+      <article class="panel panel-default">
+        <div class="panel-heading">
+          <h4>About</h4>
+        </div>
+        <div class="panel-body">
+          <div class="col-xs-12">
+            <p>
+              <span class="custom-info-label">Born on:</span>
+              <span class="pull-right">July 31st, 1980</span>
+            </p>
+            <p>
+              <span class="custom-info-label">Went to school at:</span>
+              <span class="pull-right">Hogwarts</span>
+            </p>
+            <p>
+              <span class="custom-info-label">Hometown:</span>
+              <span class="pull-right">Godrick's Hollow, England</span>
+            </p>
+            <p>
+              <span class="custom-info-label">Currently Lives:</span>
+              <span class="pull-right">Everywhere</span>
+            </p>
           </div>
         </div>
+      </article>
 
-        <!-- Main Timeline: Posts -->
-        <div id="timeline-right" class="col-sm-8">
-          <header class="card-header">
-            <h3>Post</h3>
-          </header>
-
-          <!-- Submit Post -->
-          <% if current_user.id == @user.id %>
-              <div class="card">
-
-                <%= form_for [@user, @post] do |f| %>
-                  <div class="card-body" id="post-input-card-body">
-                    <%= f.text_area :body, placeholder: "Tell the world something..." %>
-                  </div>
-                  <div class="card-footer" id="post-submit-footer">
-                    <%= f.submit "Post", class: "btn btn-primary", id: "post-submit-button" %>
-                  </div>
-                <% end %>
-              </div>
-          <% end %>
-
-          <!-- Posts -->
-          <%= render @user.posts %>
-
+      <!-- PHOTOS -->
+      <article class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Photos (34)</h4>
         </div>
-      </div>
+        <div class="panel-body">
+          <div class="col-sm-4">
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+          </div>
+
+          <div class="col-sm-4">
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+          </div>
+
+          <div class="col-sm-4">
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+          </div>
+
+          <p class="text-center">
+            <%= link_to "See More Photos", '#' %>
+          </p>
+        </div>
+      </article>
+
+      <!-- FRIENDS -->
+      <article class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Friends (0)</h4>
+        </div>
+        <div class="panel-body">
+          <div class="col-sm-4">
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+            <p class="text-center">
+              <%= link_to "Bobby Tables", "#" %>
+            </p>
+          </div>
+
+          <div class="col-sm-4">
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+            <p class="text-center">
+              <%= link_to "Bobby Tables", "#" %>
+            </p>
+          </div>
+
+          <div class="col-sm-4">
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+            <p class="text-center">
+              <%= link_to "Bobby Tables", "#" %>
+            </p>
+          </div>
+
+          <div class="col-sm-4">
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+            <p class="text-center">
+              <%= link_to "Bobby Tables", "#" %>
+            </p>
+          </div>
+
+          <div class="col-sm-4">
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+            <p class="text-center">
+              <%= link_to "Bobby Tables", "#" %>
+            </p>
+          </div>
+
+          <div class="col-sm-4">
+            <%= link_to image_tag('user_silhouette_generic.gif', alt: 'Photo', class: "img-thumbnail"),
+                        '#' %>
+            <p class="text-center">
+              <%= link_to "Bobby Tables", "#" %>
+            </p>
+          </div>
+
+          <p class="text-center">
+            <%= link_to "See More Friends", '#' %>
+          </p>
+        </div>
+
+      </article>
+
     </div>
-  </section>
-</main>
+  </aside><!-- left -->
+
+  <!-- RIGHT -->
+  <div class="col-sm-7 custom-margin">
+
+    <!-- SUBMIT POST  -->
+    <% if current_user.id == @user.id %>
+      <article class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Post</h4>
+        </div>
+
+        <%= form_for [@user, @post] do |f| %>
+          <div class="panel-body">
+            <%= f.text_area :body, placeholder: "Tell the world something..." %>
+          </div>
+          <div class="panel-footer clearfix">
+            <%= f.submit "Post", class: "btn btn-primary pull-right" %>
+          </div>
+        <% end %>
+      </article>
+    <% end %>
+
+    <!-- Posts -->
+    <%= render @user.posts %>
+
+  </div><!-- right -->
+</section><!-- main content -->

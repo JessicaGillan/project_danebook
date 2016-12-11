@@ -1,43 +1,30 @@
 <% if comment.persisted? %>
-  <div class="card comment">
-    <div class="card-body">
-
-      <!-- Author and time commented header -->
-      <header class="comment-header">
-        <img class="comment-thumbnail" src="images/cersie.jpg">
-        <p>
-          <span class="name underlined">
-            <a href="#0"><%= "#{comment.author.profile.first_name} #{comment.author.profile.last_name}" %></a>
-          </span><br/>
-          <span class="time faded">Posted on <time><%= comment.created_at %></time></span>
-          </p>
-      </header>
-
-      <!-- Comment Body -->
-      <p class="comment-content"><%= comment.body %></p>
-    </div>
-
-    <!-- Footer -->
-    <div class="card-footer">
-      <!-- Action Links -->
-      <div>
-        <ul class="comment-actions underlined">
-          <li class="like"><%= render partial: 'shared/like_link',
-                                      locals:  { likable: comment }   %></li>
-          <!-- Likes -->
-          <li><%= list_of_likes( comment ) %></li>
-
-          <% if current_user.id == comment.author_id %>
-            <li class="delete-comment">
-              <%= link_to "Delete", post_comment_path(comment.commentable , comment), method: :delete %>
-            </li>
-          <% end %>
-        </ul>
+  <div class="custom-comment clearfix">
+    <div class="row">
+      <div class="col-xs-2">
+        <%= link_to image_tag('tyrion1.png', class: "img-thumbnail pull-right custom-poster"),
+                    '#' %>
       </div>
+      <div class="col-xs-10">
+        <div class="custom-post-header">
+          <a href="#0"><%= "#{comment.author.profile.first_name} #{comment.author.profile.last_name}" %></a>
+          said on <time datetime="<%= comment.created_at %>"><%= comment.created_at %></time>
+        </div>
 
+        <p><%= comment.body %></p>
 
+        <!-- Links -->
+        <%= render partial: 'shared/like_link',
+                            locals:  { likable: comment } %>
 
-    </div>
-  </div>
+        <%= list_of_likes( comment ) %>
 
+        <% if current_user.id == comment.author_id %>
+            <%= link_to "Delete", post_comment_path(comment.commentable , comment),
+                        method: :delete,
+                        class: "pull-right" %>
+        <% end %>
+      </div>
+    </div><!-- row -->
+  </div><!-- post comment -->
 <% end %>

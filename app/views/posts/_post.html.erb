@@ -1,50 +1,47 @@
 <% if post.persisted? %>
 
-<div class="card post">
-  <div class="card-body">
+  <article class="panel panel-default">
+    <div class="panel-body">
+      <!-- Author info -->
+      <div class="custom-post-header clearfix">
+        <%= link_to image_tag('tyrion1.png', class: "img-thumbnail pull-left custom-poster"),
+                    '#' %>
 
-    <!-- Author and time posted header -->
-    <header class="post-header">
-      <img class="post-thumbnail" src="images/cersie.jpg">
-      <p>
-        <span class="name underlined">
-          <a href="#0"><%= "#{post.author.profile.first_name} #{post.author.profile.last_name}" %></a>
-        </span><br/>
-        <span class="time faded">Posted on <time><%= post.created_at %></time></span>
-        </p>
-    </header>
+        <div class="col-xs-10">
+          <%= link_to "#{post.author.profile.first_name} #{post.author.profile.last_name}", "#" %>
+          <p>Posted on <time datetime="<%= post.created_at %>"><%= post.created_at %></time></p>
+        </div>
+      </div>
 
-    <!-- Post Body -->
-    <p class="post-content"><%= post.body %></p>
-  </div>
+      <!-- Post body -->
+      <p><%= post.body %></p>
 
-  <!-- Footer -->
-  <div class="card-footer">
-    <!-- Action Links -->
-    <div>
-      <ul class="post-actions underlined">
-        <li class="like"><%= render partial: 'shared/like_link',
-                                    locals:  { likable: post }   %></li>
-        <li><a href="#">Comment</a></li>
-        <% if current_user.id == post.author.id %>
-         <li class="delete-post"><%= link_to "Delete", user_post_path(post.author, post), method: :delete %></li>
-        <% end %>
-      </ul>
     </div>
 
-    <!-- Likes -->
-    <%= list_of_likes( post ) %>
+    <div class="panel-footer">
 
-  </div>
+      <!-- Action Links -->
+      <%= render partial: 'shared/like_link', locals: { likable: post } %>
+      <a href="#">Comment</a>
+      <% if current_user.id == post.author.id %>
+       <%= link_to "Delete", user_post_path(post.author, post),
+                             method: :delete,
+                             class: "pull-right" %>
+      <% end %>
 
-  <!-- Comments  -->
-  <%= render post.comments %>
+      <!-- Likes -->
+      <div class="custom-post-liked">
+        <%= list_of_likes( post ) %>
+      </div>
 
-  <!-- Comment Form -->
-  <%= render partial: 'comments/comment_form',
-             locals:  { commentable: post,
-                        comment:     post.comments.build }%>
+      <!-- Comments -->
+      <%= render post.comments %>
 
-</div>
+      <!-- Comment Form -->
+      <%= render partial: 'comments/comment_form',
+                 locals:  { commentable: post,
+                            comment:     post.comments.build }%>
 
+    </div>
+  </article>
 <% end %>

@@ -10,10 +10,10 @@ class FriendingsController < ApplicationController
     friending_recipient = User.find_by_id( params[:id] )
 
     if current_user.friended_users << friending_recipient
-      flash[:success] = "Successfully friended #{friending_recipient.profile.first_name}"
+      flash[:success] = "Friended #{friending_recipient.first_name}"
       redirect_to friending_recipient
     else
-      flash[:error] = "Sad day. Couldn't friend #{friending_recipient.profile.first_name}"
+      flash[:error] = "Sad day. Couldn't friend #{friending_recipient.first_name}"
       redirect_to friending_recipient
     end
   end
@@ -22,7 +22,7 @@ class FriendingsController < ApplicationController
     unfriended_user = User.find_by_id( params[:id] )
 
     current_user.friended_users.delete( unfriended_user )
-    flash[:success] = "Successfully unfriended that neanderthal."
+    flash[:success] = "Unfriended #{unfriended_user.first_name}"
     redirect_to unfriended_user
   end
 end

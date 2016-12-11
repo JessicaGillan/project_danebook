@@ -3,13 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //variables extends and mixins
-$bright-red: #C53030;
-$dark-red: #730000;
-$light-green: #e6eedd;
-$med-green: #1f7a29;
-$dark-green: #0d5916;
 $light-blue: #6690e9;
 $bs-grey: #f6f6f6; // bootstrap grey
+$white: #fff;
 
 .light-border {
   border: 1px solid #ccc;
@@ -21,171 +17,65 @@ $bs-grey: #f6f6f6; // bootstrap grey
 }
 
 //global
-
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: helvetica, sans-serif;
 }
-//timeline
-#timeline-row {
-  padding: 0;
-  width: 100%;
+
+// about page
+.custom-info { margin: 10px 0; }
+
+.custom-info-label { font-weight: bold; }
+
+.custom-info-form { text-align: left; }
+
+/* timeline page
+   fixes margin for 2 column layout on timeline page */
+.custom-margin {  padding-right: 0 }
+
+/* each comment on a post, any post's poster info, margin top/bottom */
+.custom-comment, .custom-post-header {
+  margin: 10px 0;
 }
 
-#timeline-left {
-  padding-left: 0;
+// Image thumbnails
+.img-thumbnail {
+  height: 120px;
+  width: 120px;
+  margin: 5px;
 }
 
-#timeline-right {
-  padding-right: 0;
+/* poster's profile pic */
+.custom-poster {
+  height: 55px;
+  width: 55px;
 }
 
-.card {
-  margin-bottom: 15px;
+/* people who liked the post */
+.custom-post-liked {
+  padding: 15px 0;
 }
 
-.card-header {
-  @extend .light-border;
-  border-bottom: 0;
-  width: 100%;
-  background: $bs-grey;
-  text-align: center;
-  padding: 7px;
+/* friends page */
+// .custom-friend {
+//   padding: 15px 0;
+//   margin: 15px 0;
+//   border: 1px solid $bs-grey;
+// }
 
-  h3 {
-    font-size: 14px;
-    font-weight: bold;
-  }
-}
+// .custom-friend-align { margin: 30px 0; }
+//
+// .custom-friend-pic { height: 120px; }
 
-.card-body {
-  @extend .light-border;
-  border-top: none;
-  padding: 14px;
+/* photos page */
+.custom-photos > img { margin: 10px 8px; }
 
-  .link {
-    text-align: center;
-    padding: 4px 0 8px;;
-  }
-}
-
-#post-input-card-body {
-  padding: 20px;
-
-  input {
-    width: 100%;
-  }
-}
-
-#card-photos {
-  display: flex;
-  flex-wrap: wrap;
-
-  div {
-    width: 33.333333%;
-    padding: 4px;
-    text-align: center;
-  }
-
-  img {
-    width: 100%;
-  }
-}
-
-.post {
-  border-top: 1px solid #ccc;
-
-  .post-header {
-    display: inline-flex;
-    align-items: center;
-    margin-bottom: 14px;
-
-    .post-thumbnail {
-      margin-right: 14px;
-      width: 80px;
-    }
-
-    .name {
-      font-weight: bold;
-    }
-  }
-
-  .post-actions {
-    display: flex;
-
-    .like {
-      margin-right: 14px;
-    }
-
-    .delete-post {
-      margin-left: auto;
-    }
-  }
-
-  .likes {
-    margin-top: 7px;
-  }
-
-  .post-comment {
-    display: flex;
-    margin-bottom: 28px;
-
-    .comment-header {
-      margin-bottom: 7px;
-    }
-
-    .comment-footer {
-      display: flex;
-      margin-top: 7px;
-
-      .like {
-        margin-right: 14px;
-      }
-
-      .delete {
-        margin-left: auto;
-      }
-    }
-
-    .comment-thumbnail-container {
-      padding-right: 7px;
-
-      .comment-thumbnail {
-        border: 1px solid #ccc;
-        width: 80px;
-      }
-    }
-  }
-
-  .last {
-    margin-bottom: 0;
-  }
-}
-
-#post-submit-footer {
-  text-align: right;
-}
-
-.card-footer {
-  @extend .light-border;
-  background: $bs-grey;
-  padding: 7px;
-  border-top: 0;
-}
-
-.comment-input-actions {
-  display: flex;
-  align-items: center;
-  padding: 7px;
-
-  button {
-    margin-left: auto;
-  }
-}
-
-@media only screen and (max-width : 768px) {
-  #timeline-left, #timeline-right {
-    padding: 0;
-  }
-}
+// .overlay {
+//   display: none;
+//   color: $white;
+//   padding: 5px 0;
+//   background-color: rgba(0,0,0,0.7);
+// }
+//
+// .hover:hover .overlay { display: block; }

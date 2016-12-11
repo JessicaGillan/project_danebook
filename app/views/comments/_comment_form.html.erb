@@ -1,13 +1,13 @@
 <!-- Submit a Comment -->
-<div class="card">
-
+<div class="clearfix">
   <%= form_for [commentable, comment] do |f| %>
-    <div class="card-body" id="comment-input-card-body">
-      <%= f.text_area :body, placeholder: "Write a comment..." %>
+    <div class="form-group">
+      <%= f.text_area :body, placeholder: "Write a comment...",
+                             class: "form-control",
+                             id: "create-comment",
+                             rows: "3" %>
     </div>
-    <div class="card-footer" id="comment-submit-footer">
       <%= link_to "Cancel", '#' %>
-      <%= f.submit "Comment", class: "btn btn-primary", id: "comment-submit-button" %>
-    </div>
+      <%= f.submit "Comment", class: "btn btn-primary pull-right" %>
   <% end %>
 </div>
