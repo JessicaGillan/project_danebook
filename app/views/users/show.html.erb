@@ -151,7 +151,8 @@
 
         <%= form_for [@user, @post] do |f| %>
           <div class="panel-body">
-            <%= f.text_area :body, placeholder: "Tell the world something..." %>
+            <%= f.text_area :body, placeholder: "Tell the world something...",
+                                   class: "form-control" %>
           </div>
           <div class="panel-footer clearfix">
             <%= f.submit "Post", class: "btn btn-primary pull-right" %>

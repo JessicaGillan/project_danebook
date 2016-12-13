@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Friending, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "only allows one friendship to be created between two people"
+
+  it "does not allow people to friend themselves"
 end

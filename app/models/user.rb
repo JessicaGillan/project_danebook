@@ -31,11 +31,7 @@ class User < ApplicationRecord
   before_create :generate_token
   before_save   :downcase_email
 
-  def generate_token
-    begin
-      self.auth_token = SecureRandom.urlsafe_base64
-    end while User.exists?(auth_token: self.auth_token)
-  end
+
 
   def regenerate_token
     self.auth_token = nil
@@ -49,5 +45,13 @@ class User < ApplicationRecord
 
   def first_name
     profile.first_name
+  end
+
+  private
+
+  def generate_token
+    begin
+      self.auth_token = SecureRandom.urlsafe_base64
+    end while User.exists?(auth_token: self.auth_token)
   end
 end

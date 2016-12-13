@@ -5,7 +5,7 @@
 
   <section id="content">
     <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
+      <div class="col-sm-12">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">About</h3>
@@ -24,21 +24,23 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-3 titles">
-                    <ul>
-                      <li>Birthday:</li>
-                      <li>College:</li>
-                      <li>Hometown:</li>
-                      <li>Currently Lives:</li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-9">
-                    <ul>
-                      <li><%= @user.profile.birthday %></li>
-                      <li><%= @user.profile.college %></li>
-                      <li><%= @user.profile.hometown %></li>
-                      <li><%= @user.profile.current_location %></li>
-                    </ul>
+                  <div class="col-xs-12">
+                    <p>
+                      <span class="custom-info-label">Born on:</span>
+                      <span class="pull-right"><%= @user.profile.birthday %></span>
+                    </p>
+                    <p>
+                      <span class="custom-info-label">Went to school at:</span>
+                      <span class="pull-right"><%= @user.profile.college %></span>
+                    </p>
+                    <p>
+                      <span class="custom-info-label">Hometown:</span>
+                      <span class="pull-right"><%= @user.profile.hometown %></span>
+                    </p>
+                    <p>
+                      <span class="custom-info-label">Currently Lives:</span>
+                      <span class="pull-right"><%= @user.profile.current_location %></span>
+                    </p>
                   </div>
                 </div>
                 <div class="row">
@@ -47,17 +49,15 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-3 titles">
-                    <ul>
-                      <li>Email:</li>
-                      <li>Telephone:</li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-9">
-                    <ul>
-                      <li><%= @user.email %></li>
-                      <li><%= @user.profile.phone %></li>
-                    </ul>
+                  <div class="col-sm-12">
+                    <p>
+                      <span class="custom-info-label">Email:</span>
+                      <span class="pull-right"><%= @user.email %></span>
+                    </p>
+                    <p>
+                      <span class="custom-info-label">Telephone:</span>
+                      <span class="pull-right"><%= @user.profile.phone %></span>
+                    </p>
                   </div>
                 </div>
               </div>

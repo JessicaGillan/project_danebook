@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "belongs to likable"
+
+  it "only allows a user to like something once"
 end
