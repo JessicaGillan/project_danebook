@@ -1,12 +1,16 @@
 FactoryGirl.define do
   factory :profile do
-    user nil
-    birthday "2016-12-07"
-    college "MyString"
-    hometown "MyString"
-    current_location "MyString"
-    phone "MyString"
-    about_me "MyText"
-    tagline "MyText"
+    college 'UW'
+    hometown 'Cheyenne'
+    current_location 'Arvada'
+    phone '555-867-5309'
+    about_me 'squirrel'
+    tagline 'SQUIRREL'
+    first_name 'Annie'
+    last_name 'Buttons'
+    birthday '2016-12-07'
+    gender 0
+
+    user
   end
 end

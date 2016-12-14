@@ -8,14 +8,14 @@ class LikesController < ApplicationController
       @likable.likes.build(liker_id: current_user.id )
 
       if @likable.save
-        redirect_to :back
+        redirect_back(fallback_location: current_user )
       else
         flash[:error] = "Whoops, we didn't get that like saved. Try again."
-        redirect_to :back
+        redirect_back(fallback_location: current_user )
       end
     else
       flash[:error] = "Whoops, we didn't get that like saved. Try again."
-      redirect_to :back
+      redirect_back(fallback_location: current_user )
     end
   end
 
@@ -23,10 +23,10 @@ class LikesController < ApplicationController
     @like = @likable.likes.find_by_liker_id( current_user.id )
 
     if @like.destroy
-      redirect_to :back
+      redirect_back(fallback_location: current_user )
     else
       flash[:error] = "Whoops, we couldn't unlike that. Try again."
-      redirect_to :back
+      redirect_back(fallback_location: current_user )
     end
   end
 

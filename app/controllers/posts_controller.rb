@@ -14,15 +14,16 @@ class PostsController < ApplicationController
 
   def create
     if @user
-      if @user.posts.create( post_params )
+      @user.posts.build( post_params )
+      if @user.save
         flash[:success] = "Post Created"
         redirect_to user_path @user
       else
-        flash[:danger] = "Couldn't create post."
+        flash[:error] = "Couldn't create post."
         redirect_to user_path @user
       end
     else
-      flash[:danger] = "Sorry that user doesn't exist."
+      flash[:error] = "Sorry that user doesn't exist."
       redirect_to user_path current_user
     end
   end

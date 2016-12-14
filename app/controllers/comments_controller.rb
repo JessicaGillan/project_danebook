@@ -14,23 +14,23 @@ class CommentsController < ApplicationController
       @comment.author_id = current_user.id
 
       if @comment.save
-        redirect_to :back
+        redirect_back(fallback_location: current_user )
       else
         flash[:error] = "Whoops, we didn't get that comment saved. Try again."
-        redirect_to :back
+        redirect_back(fallback_location: current_user )
       end
     else
       flash[:error] = "Whoops, we didn't get that comment saved. Try again."
-      redirect_to :back
+      redirect_back(fallback_location: current_user )
     end
   end
 
   def destroy
     if @comment.destroy
-      redirect_to :back
+      redirect_back(fallback_location: current_user )
     else
       flash[:error] = "Whoops, we couldn't uncomment that. Try again."
-      redirect_to :back
+      redirect_back(fallback_location: current_user )
     end
   end
 
@@ -63,7 +63,7 @@ class CommentsController < ApplicationController
       if @comment
         unless current_user.id == @comment.author_id
           flash[:danger] = "Dude, you're not authorized for that."
-          redirect_to :back
+          redirect_back(fallback_location: current_user )
         end
       end
     end

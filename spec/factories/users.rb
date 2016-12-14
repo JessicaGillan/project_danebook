@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :user do
-    email "MyString"
-    password_digest "MyString"
+  factory :user, aliases: [:author, :liker, :friended_users, :users_friended_by] do
+    sequence(:email){ |n| "foo#{n}@bar.com" }
+    password "foobar"
   end
 end

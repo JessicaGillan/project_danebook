@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Signed in successfully."
       redirect_back_or(@user)
     else
-      flash[:danger] = "Invalid information."
+      flash[:error] = "Invalid information."
       render :new
     end
   end

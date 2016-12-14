@@ -24,10 +24,10 @@ class ProfilesController < ApplicationController
 
   def show
     if @user.nil?
-      flash[:danger] = "That user doesn't exist."
+      flash[:error] = "That user doesn't exist."
       redirect_to user_profile_path current_user
     elsif @user.profile.nil?
-      flash[:danger] = "That user hasn't set up a profile yet."
+      flash[:error] = "That user hasn't set up a profile yet."
       redirect_to user_profile_path current_user
     end
   end
@@ -46,7 +46,7 @@ class ProfilesController < ApplicationController
 
     def require_current_user
       unless current_user.id == params[:user_id].to_i
-        flash[:danger] = "Dude, you're not authorized for that."
+        flash[:error] = "Dude, you're not authorized for that."
         redirect_to :back
       end
     end

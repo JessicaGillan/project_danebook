@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
       redirect_to user_profile_path @user
     else
-      flash.now[:danger] = "Denied! You need to enter better info to get on our site."
+      flash.now[:error] = "We couldn't create an account with that info."
       render :new
     end
   end
@@ -61,14 +61,14 @@ class UsersController < ApplicationController
 
     def require_current_user
       unless current_user.id == params[:id].to_i
-        flash[:danger] = "Dude, you're not authorized for that."
+        flash[:error] = "Dude, you're not authorized for that."
         redirect_to :back
       end
     end
 
     def require_logged_out
       if user_logged_in?
-        flash[:danger] = "You already have an account."
+        flash[:error] = "You already have an account."
         store_location
         redirect_to current_user
       end
