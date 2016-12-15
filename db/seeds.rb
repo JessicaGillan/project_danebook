@@ -41,6 +41,8 @@ User.all.each do |user|
   N.times do
     user.posts.create( body: Faker::ChuckNorris.fact )
   end
+
+  user.friended_users << User.all
 end
 
 puts "Creating comments and likes on posts"

@@ -45,6 +45,33 @@ class User < ApplicationRecord
     profile.first_name
   end
 
+  def name
+    "#{profile.first_name} #{profile.last_name}"
+  end
+
+  def random_friends( n = 6 )
+    rand_friends = []
+    count = friends.count
+
+    if count <= 6
+      friends
+    else
+      n.times do
+        begin
+          friend = friends.sample
+        end while rand_friends.include? friend
+
+        rand_friends << friend
+      end
+
+      rand_friends
+    end
+  end
+
+  def friends
+    friended_users + users_friended_by
+  end
+
   private
 
   def generate_token

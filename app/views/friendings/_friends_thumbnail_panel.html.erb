@@ -1,0 +1,19 @@
+<article class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Friends (<%= count %>)</h4>
+  </div>
+  <div class="panel-body">
+    <% if friends.empty? %>
+      <p>No Friends yet!</p>
+    <% else %>
+      <% friends.each do |friend| %>
+        <%= render partial: 'users/thumbnail_plus_name_link',
+        locals: { user: friend } %>
+      <% end %>
+
+      <p class="text-center">
+        <%= link_to "See More Friends", friendings_path( id: user.id ) %>
+      </p>
+    <% end %>
+  </div>  
+</article>

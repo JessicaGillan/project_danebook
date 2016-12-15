@@ -6,8 +6,8 @@ FactoryGirl.define do
     phone '555-867-5309'
     about_me 'squirrel'
     tagline 'SQUIRREL'
-    first_name 'Annie'
-    last_name 'Buttons'
+    sequence(:first_name){ Faker::Name.first_name }
+    last_name Faker::Name.last_name
     birthday '2016-12-07'
     gender 0
 
