@@ -1,11 +1,11 @@
 class ProfilesController < ApplicationController
   before_action  :set_user, only: [:show, :edit, :update, :destroy]
   before_action  :require_current_user, except: [:show]
-  def new
-  end
-
-  def create
-  end
+  # def new
+  # end
+  #
+  # def create
+  # end
 
   def edit
     @profile = @user.profile
@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
 
     if @profile.update( profile_params )
       flash[:success] = "Profile updated!"
-      redirect_to
+      redirect_to user_profile_path @user
     else
 
     end
@@ -33,7 +33,8 @@ class ProfilesController < ApplicationController
   end
 
   private
-    # TODO: ADD ability to update ALL profile attributes
+    # TODO: ADD ability to update ALL profile attributes:
+    # first_name, last_name
     def profile_params
       params.require(:profile).permit(:birthday, :college,
                                       :hometown, :current_location,

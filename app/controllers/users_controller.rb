@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action      :require_current_user, only: [:edit, :update, :destroy]
 
   skip_before_action :require_logged_in,  only: [:new, :create]
-  before_action      :require_logged_out, only: [:create]
+  before_action      :require_logged_out, only: [:new, :create]
 
   def index
   end
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
     def require_current_user
       unless current_user.id == params[:id].to_i
         flash[:error] = "Dude, you're not authorized for that."
-        redirect_to :back
+        redirect_back(fallback_location: current_user )
       end
     end
 

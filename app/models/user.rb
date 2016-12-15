@@ -31,8 +31,6 @@ class User < ApplicationRecord
   before_create :generate_token
   before_save   :downcase_email
 
-
-
   def regenerate_token
     self.auth_token = nil
     generate_token

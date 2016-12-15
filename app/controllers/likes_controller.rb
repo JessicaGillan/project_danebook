@@ -22,7 +22,7 @@ class LikesController < ApplicationController
   def destroy
     @like = @likable.likes.find_by_liker_id( current_user.id )
 
-    if @like.destroy
+    if @like && @like.destroy
       redirect_back(fallback_location: current_user )
     else
       flash[:error] = "Whoops, we couldn't unlike that. Try again."

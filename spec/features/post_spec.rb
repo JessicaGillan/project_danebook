@@ -37,14 +37,15 @@ feature 'Post' do
   end
 
   scenario 'a logged in user can delete their post' do
+    # Be careful using 'post', it's a special word!!
     post(user, "Posty post text")
 
     post_id = user.posts.first.id
 
-    save_and_open_page
     find(:xpath, "//a[@href='/users/#{user.id}/posts/#{post_id}']").click
 
     expect(page).not_to have_content 'Posty post text'
+    
   end
 
   scenario 'a logged in user cannot delete other people\'s posts' do

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def require_logged_in
     unless user_logged_in?
-      flash[:danger] = "You must sign in."
+      flash[:error] = "You must sign in."
       store_location
       redirect_to login_path
     end
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   def log_out
     @current_user.auth_token = nil
     @current_user = nil
-    cookies.delete(:auth_token)
+    cookies[:auth_token] = nil
   end
 
   def current_user
