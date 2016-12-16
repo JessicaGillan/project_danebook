@@ -44,6 +44,7 @@ class LikesController < ApplicationController
       case params[:likable]
       when "Post"    then params[:post_id]
       when "Comment" then params[:comment_id]
+      when "Photo"   then params[:photo_id]
       else raise "Not a likable type."
       end
     end

@@ -43,7 +43,12 @@ html {
 .img-thumbnail {
   height: 120px;
   width: 120px;
-  margin: 5px;
+  margin: 5px 15px;
+  padding: 0;
+}
+
+.image {
+  background-color: $bs-grey;
 }
 
 /* poster's profile pic */
@@ -79,3 +84,6 @@ html {
 // }
 //
 // .hover:hover .overlay { display: block; }
+.top-padding-5 {
+  padding-top: 5px !important;
+}

@@ -1,0 +1,13 @@
+<div class="row">
+
+    <%= link_to image_tag('tyrion1.png', class: "img-thumbnail pull-left custom-poster"),
+    '#' %>
+
+
+  <div class="top-padding-5">
+    <%= link_to user.name, user_path(user) %>
+    <p>Posted on <time datetime="<%= object.created_at %>"><%= object.created_at %></time></p>
+  </div>
+
+
+</div>

@@ -1,0 +1,34 @@
+<section class="row">
+  <div class="col-sm-8">
+    <div class="image">
+      <%= image_tag @photo.user_photo.expiring_url(10), alt: "User Photo", class: "center-block" %>
+    </div>
+    <div class="pull-right">
+      <p><%= link_to "Set as Profile Photo", profile_pic_user_profile_path(@photo.owner, @photo),
+                                             method: :post %></p>
+      <p><%= link_to "Set as Cover Photo", cover_pic_user_profile_path(@photo.owner, @photo) %></p>
+      <p><%= link_to "Delete Photo", '#' %></p>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <!-- Author info -->
+    <%= render partial: 'users/activity_signature',
+               locals:  { user: @photo.owner, object: @photo } %>
+
+
+    <!-- Like Link -->
+    <%= render partial: 'shared/like_link', locals: { likable: @photo } %>
+
+    <!-- Likes -->
+    <%= list_of_likes( @photo ) %>
+
+    <!-- Comment Form -->
+    <%= render partial: 'comments/comment_form',
+               locals:  { commentable: @photo,
+                          comment:     @photo.comments.build }%>
+
+    <!-- Comments -->
+    <%= render @photo.comments %>
+
+  </div>
+</section>

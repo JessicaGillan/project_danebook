@@ -54,7 +54,8 @@ class CommentsController < ApplicationController
 
     def commentable_id
       case params[:commentable]
-      when "Post" then params[:post_id]
+      when "Post"  then params[:post_id]
+      when "Photo" then params[:photo_id]
       else raise "Not a commentable type."
       end
     end
@@ -62,7 +63,7 @@ class CommentsController < ApplicationController
     def require_current_user
       if @comment
         unless current_user.id == @comment.author_id
-          flash[:danger] = "Dude, you're not authorized for that."
+          flash[:error] = "You're not authorized for that, silly rabbit."
           redirect_back(fallback_location: current_user )
         end
       end

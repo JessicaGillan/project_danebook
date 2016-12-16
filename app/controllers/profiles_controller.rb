@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action  :set_user, only: [:show, :edit, :update, :destroy]
+  before_action  :set_user, only: [:show, :edit, :update, :destroy, :add_picture]
   before_action  :require_current_user, except: [:show]
   # def new
   # end
@@ -32,13 +32,36 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def add_profile_picture
+    @user.profile.profile_photo_id( params[:id] )
+
+    if @user.save
+      flash[:success] = "Profile picture updated!"
+      redirect_back(fallback_location: user_path(@user) )
+    else
+
+    end
+  end
+
+  def add_cover_picture
+    @user.profile.cover_photo_id( params[:id] )
+
+    if @user.save
+      flash[:success] = "Cover picture updated!"
+      redirect_back(fallback_location: user_path(@user) )
+    else
+
+    end
+  end
+
   private
     # TODO: ADD ability to update ALL profile attributes:
     # first_name, last_name
     def profile_params
       params.require(:profile).permit(:birthday, :college,
                                       :hometown, :current_location,
-                                      :phone, :tagline, :about_me)
+                                      :phone, :tagline, :about_me,
+                                      :profile_photo_id, :cover_photo_id)
     end
 
     def set_user

@@ -2,15 +2,10 @@
 
   <article class="panel panel-default">
     <div class="panel-body">
-      <!-- Author info -->
       <div class="custom-post-header clearfix">
-        <%= link_to image_tag('tyrion1.png', class: "img-thumbnail pull-left custom-poster"),
-                    '#' %>
-
-        <div class="col-xs-10">
-          <%= link_to "#{post.author.profile.first_name} #{post.author.profile.last_name}", "#" %>
-          <p>Posted on <time datetime="<%= post.created_at %>"><%= post.created_at %></time></p>
-        </div>
+        <!-- Author info -->
+        <%= render partial: 'users/activity_signature',
+                   locals:  { user: post.author, object: post } %>
       </div>
 
       <!-- Post body -->

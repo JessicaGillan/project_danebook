@@ -1,8 +1,9 @@
 class PhotosController < ApplicationController
   before_action :set_user
+  before_action :require_friend, only: [:show]
 
   def index
-    @photos = @user.photos.map(&:photo) if @user
+    @photos = @user.photos
   end
 
   def new
@@ -22,13 +23,27 @@ class PhotosController < ApplicationController
     end
   end
 
+  def show
+    @photo = Photo.find_by_id( params[:id] )
+  end
+
   private
 
     def set_user
+      # TODO redirect if don't find user
       @user = User.find_by_id(params[:user_id])
     end
 
     def photo_params
-      params.require(:photo).permit(:photo)
+      # TODO fix so doesn't break when user hits button w/o adding file
+      params.require(:photo).permit(:user_photo)
+    end
+
+    def require_friend
+      unless (@user.friends.include? current_user) || @user.id == current_user.id
+        raise
+        flash[:error] = "You need to be a friend to see that, silly goose."
+        redirect_back(fallback_location: current_user )
+      end
     end
 end
