@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :posts,    foreign_key: :author_id, dependent: :destroy
   has_many :likes,    foreign_key: :liker_id,  dependent: :destroy
   has_many :comments, foreign_key: :author_id, dependent: :nullify
+  has_many :photos,   foreign_key: :owner_id, dependent: :destroy
 
   has_many :initiated_friendings, foreign_key: :friender_id,
                                   class_name: "Friending"

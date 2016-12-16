@@ -15,7 +15,7 @@
             <ul class="nav navbar-nav ">
               <li><%= link_to "Timeline", user_path(user) %></li>
               <li><%= link_to "About", user_profile_path(user) %></li>
-              <li><a href="#">Photos</a></li>
+              <li><%= link_to "Photos", user_photos_path(user) %></li>
               <li><%= link_to "Friends (#{user.friends.count})", friendings_path( id: user.id ) %></li>
             </ul>
           </div>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users do
     resource  :profile, only: [:show, :new, :edit, :create, :update]
     resources :posts
+    resources :photos
   end
 
   resource  :session

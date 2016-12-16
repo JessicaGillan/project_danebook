@@ -33,10 +33,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass'
 gem 'simple_form'
 
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'figaro'
 
+group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210202119) do
+ActiveRecord::Schema.define(version: 20161216001246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 20161210202119) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id", using: :btree
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "owner_id",           null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["owner_id"], name: "index_photos_on_owner_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
