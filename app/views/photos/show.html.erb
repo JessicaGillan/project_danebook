@@ -4,9 +4,8 @@
       <%= image_tag @photo.user_photo.expiring_url(10), alt: "User Photo", class: "center-block" %>
     </div>
     <div class="pull-right">
-      <p><%= link_to "Set as Profile Photo", profile_pic_user_profile_path(@photo.owner, @photo),
-                                             method: :post %></p>
-      <p><%= link_to "Set as Cover Photo", cover_pic_user_profile_path(@photo.owner, @photo) %></p>
+      <%= render partial: 'profiles/set_photos_form', locals: { photo: @photo } %>
+      
       <p><%= link_to "Delete Photo", '#' %></p>
     </div>
   </div>

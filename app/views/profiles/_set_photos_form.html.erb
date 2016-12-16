@@ -1,0 +1,10 @@
+<p>
+  <%= link_to  "Set as Profile Photo",
+                user_profile_path(@photo.owner, profile: { profile_photo_id: @photo.id }),
+                method: :patch %>
+</p>
+<p>
+  <%= link_to "Set as Cover Photo",
+              user_profile_path(@photo.owner, profile: { cover_photo_id: @photo.id }),
+              method: :patch %>
+</p>

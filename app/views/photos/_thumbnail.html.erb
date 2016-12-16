@@ -1,4 +1,4 @@
 <div class="col-sm-3">
   <%= link_to (image_tag photo.user_photo.expiring_url(10,:thumb), alt: "User Photo"),
-              user_photo_path(photo.owner, photo) %>
+              user_photo_path(photo.owner, photo), class: "thumbnail" %>
 </div>

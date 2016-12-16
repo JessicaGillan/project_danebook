@@ -7,13 +7,12 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default">
-          <div class="panel-heading">
+          <div class="panel-heading clearfix text-center">
             <h3 class="panel-title">About</h3>
-            <div class="pull-right">
-              <% if current_user.id == @user.id %>
-               <%= link_to "Edit Profile", edit_user_profile_path( current_user ), class: "btn btn-primary" %>
-              <% end %>
-            </div>
+
+            <% if current_user.id == @user.id %>
+             <%= link_to "Edit Profile", edit_user_profile_path( current_user ), class: "btn btn-primary pull-right" %>
+            <% end %>
           </div>
           <div class="panel-body">
             <div class="row">

@@ -6,10 +6,7 @@ Rails.application.routes.draw do
   root 'users#new'
 
   resources :users do
-    resource  :profile, only: [:show, :new, :edit, :create, :update] do
-      post '/:id/profile_photo' => 'profiles#add_profile_photo', as: 'profile_pic'
-      post '/:id/cover_photo' => 'profiles#add_cover_photo', as: 'cover_pic'
-    end
+    resource  :profile, only: [:show, :edit, :update] 
     resources :posts
     resources :photos
   end
