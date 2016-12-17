@@ -29,6 +29,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     presence: true
 
+  # TODO: Ask about best way to do this (default photo handling)
   before_create :generate_token
   before_save   :downcase_email
 

@@ -27,28 +27,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # def add_profile_picture
-  #   @user.profile.profile_photo_id( params[:id] )
-  #
-  #   if @user.save
-  #     flash[:success] = "Profile picture updated!"
-  #     redirect_back(fallback_location: user_path(@user) )
-  #   else
-  #
-  #   end
-  # end
-  #
-  # def add_cover_picture
-  #   @user.profile.cover_photo_id( params[:id] )
-  #
-  #   if @user.save
-  #     flash[:success] = "Cover picture updated!"
-  #     redirect_back(fallback_location: user_path(@user) )
-  #   else
-  #
-  #   end
-  # end
-
   private
     # TODO: ADD ability to update ALL profile attributes:
     # first_name, last_name
@@ -65,7 +43,7 @@ class ProfilesController < ApplicationController
 
     def require_current_user
       unless current_user.id == params[:user_id].to_i
-        flash[:error] = "Dude, you're not authorized for that."
+        flash[:error] = "You're not authorized for that."
         redirect_to :back
       end
     end

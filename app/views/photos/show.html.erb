@@ -1,33 +1,41 @@
 <section class="row">
-  <div class="col-sm-8">
-    <div class="image">
-      <%= image_tag @photo.user_photo.expiring_url(10), alt: "User Photo", class: "center-block" %>
+  <% if @photo %>
+    <div class="col-sm-8">
+      <div class="image">
+
+        <%= image_tag @photo.user_photo.expiring_url(10), alt: "User Photo",
+                      class: "center-block img-responsive" %>
+
+      </div>
+      <div class="pull-right">
+        <%= render partial: 'profiles/set_photos_form', locals: { photo: @photo } %>
+
+        <p><%= link_to "Delete Photo", user_photo_path( @photo.owner, @photo ),
+                       method: :delete %></p>
+      </div>
     </div>
-    <div class="pull-right">
-      <%= render partial: 'profiles/set_photos_form', locals: { photo: @photo } %>
-      
-      <p><%= link_to "Delete Photo", '#' %></p>
+    <div class="col-sm-4">
+      <!-- Author info -->
+      <%= render partial: 'users/activity_signature',
+                 locals:  { user: @photo.owner, object: @photo } %>
+
+
+      <!-- Like Link -->
+      <%= render partial: 'shared/like_link', locals: { likable: @photo } %>
+
+      <!-- Likes -->
+      <%= list_of_likes( @photo ) %>
+
+      <!-- Comment Form -->
+      <%= render partial: 'comments/comment_form',
+                 locals:  { commentable: @photo,
+                            comment:     @photo.comments.build }%>
+
+      <!-- Comments -->
+      <%= render @photo.comments %>
+
     </div>
-  </div>
-  <div class="col-sm-4">
-    <!-- Author info -->
-    <%= render partial: 'users/activity_signature',
-               locals:  { user: @photo.owner, object: @photo } %>
-
-
-    <!-- Like Link -->
-    <%= render partial: 'shared/like_link', locals: { likable: @photo } %>
-
-    <!-- Likes -->
-    <%= list_of_likes( @photo ) %>
-
-    <!-- Comment Form -->
-    <%= render partial: 'comments/comment_form',
-               locals:  { commentable: @photo,
-                          comment:     @photo.comments.build }%>
-
-    <!-- Comments -->
-    <%= render @photo.comments %>
-
-  </div>
+  <% else %>
+    <h2 class="text-center">Photo Not Found</h2>
+  <% end %>
 </section>

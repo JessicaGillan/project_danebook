@@ -41,8 +41,8 @@ html {
 
 // Image thumbnails
 .img-thumbnail {
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
   margin: 5px 15px;
   padding: 0;
 }
@@ -55,6 +55,7 @@ html {
 .custom-poster {
   height: 55px;
   width: 55px;
+  margin-right: 10px ;
 }
 
 /* people who liked the post */

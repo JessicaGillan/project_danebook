@@ -2,8 +2,9 @@
   <div class="custom-comment clearfix">
     <div class="row">
       <div class="col-xs-2">
-        <%= link_to image_tag('tyrion1.png', class: "img-thumbnail pull-right custom-poster"),
-                    '#' %>
+        <%= link_to  image_tag(comment.author.profile.profile_photo_url(:thumb),
+                     alt: "Profile Image", class: "img-thumbnail pull-right custom-poster"),
+                     user_path(comment.author) %>
       </div>
       <div class="col-xs-10">
         <div class="custom-post-header">

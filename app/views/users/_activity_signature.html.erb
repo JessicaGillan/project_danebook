@@ -1,13 +1,9 @@
 <div class="row">
+  <div class="col-xs-12">
+    <%= link_to  image_tag(user.profile.profile_photo_url(:thumb), alt: "Profile Image", class: "pull-left custom-poster thumbnail"),
+                 user_path(user) %>
 
-    <%= link_to image_tag('tyrion1.png', class: "img-thumbnail pull-left custom-poster"),
-    '#' %>
-
-
-  <div class="top-padding-5">
     <%= link_to user.name, user_path(user) %>
     <p>Posted on <time datetime="<%= object.created_at %>"><%= object.created_at %></time></p>
   </div>
-
-
 </div>
