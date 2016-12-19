@@ -7,12 +7,14 @@
                       class: "center-block img-responsive" %>
 
       </div>
-      <div class="pull-right">
-        <%= render partial: 'profiles/set_photos_form', locals: { photo: @photo } %>
+      <% if is_current_user? @photo.owner %>
+        <div class="pull-right">
+          <%= render partial: 'profiles/set_photos_form', locals: { photo: @photo } %>
 
-        <p><%= link_to "Delete Photo", user_photo_path( @photo.owner, @photo ),
-                       method: :delete %></p>
-      </div>
+          <p><%= link_to "Delete Photo", user_photo_path( @photo.owner, @photo ),
+                         method: :delete %></p>
+        </div>
+      <% end %>
     </div>
     <div class="col-sm-4">
       <!-- Author info -->

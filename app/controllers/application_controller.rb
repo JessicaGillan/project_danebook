@@ -35,9 +35,15 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
+  helper_method :current_user
 
   def user_logged_in?
     !!current_user
+  end
+  helper_method :user_logged_in?
+
+  def is_current_user?(user)
+    user_logged_in? && ( current_user.id == user.id )
   end
 
   def redirect_back_or(default)
@@ -48,7 +54,4 @@ class ApplicationController < ActionController::Base
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
-
-  helper_method :current_user
-  helper_method :user_logged_in?
 end
