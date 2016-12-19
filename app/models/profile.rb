@@ -8,7 +8,7 @@ class Profile < ApplicationRecord
 
   enum gender_options: [:male, :female]
 
-  DEFAULT_COVER_PHOTO_URL   = '/assets/large_missing.jpg'
+  DEFAULT_COVER_PHOTO_URL   = 'large_missing.jpg'
   DEFAULT_PROFILE_PHOTO_URL = 'thumb_missing.jpg'
 
   def profile_photo_url( size_sym = :large )
