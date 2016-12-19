@@ -1,0 +1,8 @@
+<h1><%= "Hi, #{@user.first_name}." %></h1>
+
+<p>
+  <%= "Someone commented on your #{@comment.commentable_type.downcase}." %>
+</p>
+<p>
+  <%= link_to "Check it out here", url_for( @commentable ) %>
+</p>

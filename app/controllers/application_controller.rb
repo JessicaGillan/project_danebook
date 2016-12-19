@@ -45,6 +45,7 @@ class ApplicationController < ActionController::Base
   def is_current_user?(user)
     user_logged_in? && ( current_user.id == user.id )
   end
+  helper_method :is_current_user?
 
   def redirect_back_or(default)
     redirect_to session[:forwarding_url] || default

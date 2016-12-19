@@ -5,4 +5,5 @@ class Comment < ApplicationRecord
   has_many :likes, :as => :likable, dependent: :destroy
 
   validates :body, length: { minimum: 1 }
+
 end

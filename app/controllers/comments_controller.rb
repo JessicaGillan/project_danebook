@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
       @comment.author_id = current_user.id
 
       if @comment.save
+        queue_comment_email( @comment )
         redirect_back(fallback_location: current_user )
       else
         flash[:error] = "Whoops, we didn't get that comment saved. Try again."
@@ -67,5 +68,12 @@ class CommentsController < ApplicationController
           redirect_back(fallback_location: current_user )
         end
       end
+    end
+
+    # TODO: Can you check is_current_user? from model to make this a callback?
+    def queue_comment_email( comment )
+      user = comment.commentable.user
+
+      UserMailer.delay.comment( user.id,  comment.id ) unless is_current_user?( user )
     end
 end
