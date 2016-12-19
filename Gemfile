@@ -37,6 +37,9 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro'
 
+gem 'delayed_job_active_record'
+
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -57,6 +60,7 @@ group :development, :test do
   gem 'faker'
 
   gem 'pry-rails'
+
 end
 
 group :test do
@@ -71,6 +75,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener'
 
 end
 

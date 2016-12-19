@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :posts,    foreign_key: :author_id, dependent: :destroy
   has_many :likes,    foreign_key: :liker_id,  dependent: :destroy
-  has_many :comments, foreign_key: :author_id, dependent: :nullify
+  has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_many :photos,   foreign_key: :owner_id, dependent: :destroy
 
   has_many :initiated_friendings, foreign_key: :friender_id,
@@ -29,8 +29,9 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     presence: true
 
-  # TODO: Ask about best way to do this (default photo handling)
   before_create :generate_token
+  after_create  :queue_welcome_email
+
   before_save   :downcase_email
 
   def regenerate_token
@@ -80,5 +81,9 @@ class User < ApplicationRecord
     begin
       self.auth_token = SecureRandom.urlsafe_base64
     end while User.exists?(auth_token: self.auth_token)
+  end
+
+  def queue_welcome_email
+    UserMailer.delay.welcome( self.id )
   end
 end

@@ -1,5 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  # TODO: Add SendGrid configurations
+  
   Paperclip.options[:command_path] = "/usr/local/bin"
 
   config.paperclip_defaults = {
