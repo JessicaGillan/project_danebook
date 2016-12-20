@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   before_action      :require_logged_out, only: [:new, :create]
 
   def index
+     @users = Profile.includes(:user).search(params[:search]).map{ |profile| profile.user }
   end
 
   def new
