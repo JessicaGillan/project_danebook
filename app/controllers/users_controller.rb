@@ -61,14 +61,13 @@ class UsersController < ApplicationController
 
     def require_current_user
       unless current_user.id == params[:id].to_i
-        flash[:error] = "Dude, you're not authorized for that."
+        flash[:error] = "Silly goose, you're not authorized for that."
         redirect_back(fallback_location: current_user )
       end
     end
 
     def require_logged_out
       if user_logged_in?
-        flash[:error] = "You already have an account."
         store_location
         redirect_to current_user
       end
