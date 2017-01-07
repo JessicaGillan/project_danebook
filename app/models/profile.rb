@@ -29,8 +29,8 @@ class Profile < ApplicationRecord
 
   def self.search(query)
     if query
-      where("first_name ILIKE ?", "%#{query}%")
-      .or(self.where("last_name ILIKE ?", "%#{query}%"))
+      where("first_name ILIKE ?", "#{query}%")
+      .or(self.where("last_name ILIKE ?", "#{query}%"))
     else
       # If no search term provided, this returns
       # a relation so we can chain this
