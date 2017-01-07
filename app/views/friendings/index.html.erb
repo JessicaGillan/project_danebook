@@ -1,17 +1,21 @@
-<main class="container-fluid">
+<!-- Top Profile Banner -->
+<%= render partial: 'users/profile_top_banner', locals: { user: @user } %>
 
-  <!-- Top Profile Banner -->
-  <%= render partial: 'users/profile_top_banner', locals: { user: @user } %>
-
-  <section id="content">
-    <div class="row">
-
-      <% if @friends.empty? %>
-        <h4>This user is a wolf pack of one.</h4>
-      <% else %>
-        <%= render @friends %>
-      <% end %>
+<section id="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix text-center">
+          <h3 class="panel-title">Friends</h3>
+        </div>
+        <div class="panel-body">
+          <% if @friends.empty? %>
+            <h4>This user is a wolf pack of one.</h4>
+          <% else %>
+            <%= render @friends %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </section>
-
-</main>
+  </div>
+</section>

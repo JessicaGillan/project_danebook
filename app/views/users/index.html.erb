@@ -1,6 +1,20 @@
 
-<div class="row">
-  <div class="col-xs-8 col-xs-offset-2">
-    <%= render @users %>
+
+<section id="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix text-center">
+          <h3 class="panel-title">We found...</h3>
+        </div>
+        <div class="panel-body">
+          <% if @users.empty? %>
+            <h4>No matching users, try again with a broader search.</h4>
+          <% else %>
+            <%= render @users %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>

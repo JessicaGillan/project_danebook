@@ -99,6 +99,12 @@ ul {
   .user-name { font-size: 1.2em;
                font-weight: bold;
                text-transform: capitalize;}
+  .btn-primary { margin: 8px 5px;
+                 padding: 6px 12px;}
+  .btn-primary:hover { color: #fff;
+                       background-color: #286090;
+                       border-color: #204d74;}               
+  .navbar-right { height: 50px; }
 }
 
 #content {
