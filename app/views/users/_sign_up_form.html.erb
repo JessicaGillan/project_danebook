@@ -1,3 +1,4 @@
+<div class="col-xs-12">
 
 <%= simple_form_for(user, html: { class: 'form-horizontal' } )  do |f| %>
   <%= f.simple_fields_for(:profile, html: { class: 'form-horizontal' } ) do |profile_form| %>
@@ -27,19 +28,29 @@
                           label: false %>
 
   <%= f.simple_fields_for(:profile, html: { class: 'form-horizontal' } ) do |profile_form| %>
-    <%= profile_form.input :birthday,  start_year: Date.today.year - 90,
-                            end_year: Date.today.year,
-                            order: [:month, :day, :year] %>
+  <div class="row">
+    <div class="col-xs-12">
 
-    <%= profile_form.input :gender,    collection: Profile.gender_options.keys.map(&:humanize),
-                            value_method: :downcase,
-                            as: :radio_buttons,
-                            item_wrapper_class: 'radio-inline',
-                            label: false %>
+      <%= profile_form.input :birthday,  start_year: Date.today.year - 90,
+      end_year: Date.today.year,
+      order: [:month, :day, :year] %>
+
+      <div class="row">
+
+        <%= profile_form.input :gender,    collection: Profile.gender_options.keys.map(&:humanize),
+        value_method: :downcase,
+        as: :radio_buttons,
+        item_wrapper_class: 'radio-inline',
+        label: false %>
+      </div>
+    </div>
+  </div>
   <% end %>
 
 
-
-  <%= f.button :submit,   class: "btn-success", id: "btn-cta" %>
+  <div class="row">
+    <%= f.button :submit,   class: "btn-success", id: "btn-cta" %>
+  </div>
 
 <% end %>
+</div>
