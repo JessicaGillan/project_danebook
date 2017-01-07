@@ -3,19 +3,30 @@
 <%= render partial: 'users/profile_top_banner', locals: { user: @user } %>
 
 <section class="row">
-  <h2>Paste the URL to a photo on the web:</h2>
 
-  <h2>Or...</h2>
-
-  <h3>Select a photo from your hard drive...</h3>
+</section>
 
 
+<section id="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix text-center">
+          <h3 class="panel-title">Add a Picture</h3>
+            <%= link_to "Back", user_photos_path(@user), class: 'btn btn-primary pull-right' %>
+        </div>
+        <div class="panel-body">
+          <h3>Select a photo from your hard drive...</h3>
 
-  <%=  form_for [@user,@photo] do |f| %>
+          <%=  form_for [@user,@photo] do |f| %>
 
-  <%= f.file_field :user_photo%>
+          <%= f.file_field :user_photo, class: "top-bottom-margin"%>
 
-  <%= f.submit 'Create Photo', class: "btn-success", id: "btn-cta" %>
+          <%= f.submit 'Upload Photo', class: "btn btn-success top-bottom-margin", id: "btn-cta" %>
 
-  <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
