@@ -1,16 +1,21 @@
 
-<h2>Paste the URL to a photo on the web:</h2>
+<!-- Top Profile Banner -->
+<%= render partial: 'users/profile_top_banner', locals: { user: @user } %>
 
-<h2>Or...</h2>
+<section class="row">
+  <h2>Paste the URL to a photo on the web:</h2>
 
-<h3>Select a photo from your hard drive...</h3>
+  <h2>Or...</h2>
+
+  <h3>Select a photo from your hard drive...</h3>
 
 
 
-<%=  form_for [@user,@photo] do |f| %>
+  <%=  form_for [@user,@photo] do |f| %>
 
   <%= f.file_field :user_photo%>
 
   <%= f.submit 'Create Photo', class: "btn-success", id: "btn-cta" %>
 
-<% end %>
+  <% end %>
+</section>

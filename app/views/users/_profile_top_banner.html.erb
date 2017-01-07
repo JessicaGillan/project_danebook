@@ -4,37 +4,35 @@
   }
 </style>
 
-<section class="row" id="profile-banner">
-  <div class="col-xs-12">
-    <div class="row">
-      <div class="banner-wrapper col-xs-12">
-        <%= image_tag user.profile.profile_photo_url(:thumb), alt: "Profile Image", class: "thumbnail" %>
-      </div>
-    </div>
+<section id="profile-banner">
 
-    <div class="row">
-        <nav class="navbar navbar-default">
-          <div class="col-sm-2 col-sm-offset-2">
-            <h4 class="text-center"><%= "#{user.profile.first_name} #{user.profile.last_name}" %></h4>
-          </div>
-          <div class="col-sm-6">
-            <ul class="nav navbar-nav ">
-              <li><%= link_to "Timeline", user_path(user) %></li>
-              <li><%= link_to "About", user_profile_path(user) %></li>
-              <li><%= link_to "Photos", user_photos_path(user) %></li>
-              <li><%= link_to "Friends (#{user.friends.count})", friendings_path( id: user.id ) %></li>
-            </ul>
-          </div>
-          <div class="col-sm-2">
-            <ul class="nav navbar-nav navbar-right">
-              <% if current_user.id == user.id %>
-                <li><%= link_to "Edit Profile", edit_user_profile_path( current_user ) %></li>
-              <% else %>
-                <li><%= render partial: 'shared/friend_link', locals: { user: user } %></li>
-              <% end %>
-            </ul>
-          </div>
-        </nav>
+  <div class="row">
+    <div class="banner-wrapper col-xs-12">
+      <%= image_tag user.profile.profile_photo_url(:thumb), alt: "Profile Image", class: "thumbnail" %>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default">
+          <ul class="nav navbar-nav">
+            <li class="nav-item-pusher">(Profile Picture)</li>
+            <li class="user-name"><%= link_to "#{user.profile.first_name} #{user.profile.last_name}", user_path(user) %></li>
+            <li><%= link_to "Timeline", user_path(user) %></li>
+            <li><%= link_to "About", user_profile_path(user) %></li>
+            <li><%= link_to "Photos", user_photos_path(user) %></li>
+            <li><%= link_to "Friends (#{user.friends.count})", friendings_path( id: user.id ) %></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user.id == user.id %>
+            <li><%= link_to "Edit Profile", edit_user_profile_path( current_user ) %></li>
+            <% else %>
+            <li><%= render partial: 'shared/friend_link', locals: { user: user } %></li>
+            <% end %>
+          </ul>
+      </nav>
+    </div>
+  </div>
+
 </section>
