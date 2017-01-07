@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       params[:remember] ? permanent_log_in(@user) : log_in(@user)
       flash[:success] = "Signed in successfully."
-      redirect_back_or(@user)
+      redirect_to @user
     else
       flash[:error] = "Invalid information."
       render :new
