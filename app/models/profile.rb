@@ -26,4 +26,15 @@ class Profile < ApplicationRecord
       DEFAULT_COVER_PHOTO_URL
     end
   end
+
+  def self.search(query)
+    if query
+      where("first_name ILIKE ?", "%#{query}%")
+      .or(self.where("last_name ILIKE ?", "%#{query}%"))
+    else
+      # If no search term provided, this returns
+      # a relation so we can chain this
+      where("")
+    end
+  end
 end

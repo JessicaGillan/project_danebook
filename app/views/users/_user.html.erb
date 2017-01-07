@@ -1,1 +1,11 @@
-<h4><%= link_to user.first_name, user %></h4>
+<div class="row">
+  <div class="col-xs-12">
+    <%= link_to  image_tag(user.profile.profile_photo_url(:thumb), alt: "Profile Image", class: "pull-left custom-poster thumbnail"),
+                 user_path(user) %>
+
+    <%= link_to user.name, user_path(user) %>
+    <p class="pull-right clearfix">
+      <%= render partial: 'shared/friend_link', locals: { user: user } %>
+    </p>
+  </div>
+</div>
