@@ -56,6 +56,7 @@ users.each_with_index do |user, i|
   user.save
 end
 
+puts "---------------------"
 puts "Creating JG Profile"
 
 me = User.create( email: "gillan.jessica@gmail.com",
@@ -68,7 +69,7 @@ me.create_profile( first_name: "Jessica",
                    college:    "Colorado School of Mines",
                    hometown:   "Arvada",
                    current_location: "Denver, CO",
-                   phone:     '',
+                   phone:     '555-5555',
                    tagline:   '"No computer is ever going to ask a new, reasonable question. It takes trained people to do that." - Grace Hopper',
                    about_me:  "Engineer, developer, coffee drinker, and dance party-er.",
                    gender:    1
@@ -78,8 +79,9 @@ N.times do
  me.posts.create( body: Faker::ChuckNorris.fact )
 end
 
-me.friended_users << users
-me.photos.build(user_photo: File.open("app/assets/images/users/me.jpg"))
+puts "Adding JG profile photo"
+me.save
+me.photos.build(user_photo: File.open("app/assets/images/users/me.jpeg"))
 me.save
 me.profile.profile_photo = me.photos.first
 me.save
