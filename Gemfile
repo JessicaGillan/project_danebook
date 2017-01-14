@@ -39,6 +39,8 @@ gem 'figaro'
 
 gem 'delayed_job_active_record'
 
+gem 'faker'
+
 
 group :development do
   gem 'better_errors'
@@ -57,7 +59,7 @@ group :development, :test do
 
   gem 'jazz_fingers'
 
-  gem 'faker'
+
 
   gem 'pry-rails'
 
