@@ -17,6 +17,10 @@ end
 
 puts "Creating Users"
 
+User.create( email: "gillan.jessica@gmail.com",
+             password: PASSWORD,
+             password_confirmation: PASSWORD )
+
 N.times do
   User.create( email: Faker::Internet.email,
                password: PASSWORD,
@@ -55,6 +59,36 @@ users.each_with_index do |user, i|
   user.profile.profile_photo = user.photos.first
   user.save
 end
+
+puts "Creating JG Profile"
+
+me = User.create( email: "gillan.jessica@gmail.com",
+             password: PASSWORD,
+             password_confirmation: PASSWORD )
+
+me.create_profile( first_name: "Jessica",
+                   last_name:  "Gillan",
+                   birthday:   Faker::Date.between(30.years.ago, 10.years.ago),
+                   college:    "Colorado School of Mines",
+                   hometown:   "Arvada",
+                   current_location: "Denver, CO",
+                   phone:     '',
+                   tagline:   '"No computer is ever going to ask a new, reasonable question. It takes trained people to do that." - Grace Hopper',
+                   about_me:  "Engineer, developer, coffee drinker, and dance party-er.",
+                   gender:    1
+                   )
+
+N.times do
+ me.posts.create( body: Faker::ChuckNorris.fact )
+end
+
+me.friended_users << users
+me.photos.build(user_photo: File.open("app/assets/images/users/me.jpg"))
+me.save
+me.profile.profile_photo = user.photos.first
+me.save
+
+users = User.all
 
 puts "Adding photos to user's collections"
 NUM_PHOTOS = 14
