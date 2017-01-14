@@ -1,0 +1,19 @@
+<article class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Photos (<%= count %>)</h4>
+  </div>
+  <div class="panel-body">
+    <% if photos.empty? %>
+      <p>No Photos yet!</p>
+    <% else %>
+      <% photos.each do |photo| %>
+      <%= link_to (image_tag photo.user_photo.expiring_url(10,:thumb), alt: "User Photo"),
+                  user_photo_path(photo.owner, photo), class: "thumbnail" %>
+      <% end %>
+
+      <p class="text-center">
+        <%= link_to "See More Photos", user_photos_path( id: user.id ) %>
+      </p>
+    <% end %>
+  </div>
+</article>

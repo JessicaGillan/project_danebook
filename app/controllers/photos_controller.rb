@@ -15,14 +15,17 @@ class PhotosController < ApplicationController
   def create
     @user.photos.build( photo_params )
 
-    if @user.save
-      flash[:success] = "Photo Uploaded."
+    flash[:danger] = "Photo uploading has been disabled to do an attack on the AWS storage it utilized. Stupid hackers! Sorry :("
+    redirect_back(fallback_location: user_photos_path(@user) )
 
-      redirect_to user_photos_path @user
-    else
-      flash.now[:error] = "We couldn't create an account with that info."
-      redirect_back(fallback_location: user_photos_path(@user) )
-    end
+    # if @user.save
+    #   flash[:success] = "Photo Uploaded."
+    #
+    #   redirect_to user_photos_path @user
+    # else
+    #   flash[:error] = "Upload failed."
+    #   redirect_back(fallback_location: user_photos_path(@user) )
+    # end
   end
 
   def show
@@ -46,8 +49,8 @@ class PhotosController < ApplicationController
     end
 
     def photo_params
-      # TODO fix so doesn't break when user hits button w/o adding file
-      params.require(:photo).permit(:user_photo)
+      # fetch(:photo, {}) -> prevents failure when submitted w/o upload
+      params.fetch(:photo, {}).permit(:user_photo)
     end
 
     def require_friend

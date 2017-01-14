@@ -23,7 +23,7 @@ N.times do
                password_confirmation: PASSWORD )
 end
 
-puts "Creating Profiles and Posts for each user"
+puts "Creating Profiles and Posts for each user, adding friends"
 
 User.all.each do |user|
   user.create_profile( first_name: Faker::Name.first_name,

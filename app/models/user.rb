@@ -53,21 +53,45 @@ class User < ApplicationRecord
   end
 
   def random_friends( n = 6 )
-    rand_friends = []
-    count = friends.count
+    # rand_friends = []
+    # count = friends.count
+    #
+    # if count <= 6
+    #   friends
+    # else
+    #   n.times do
+    #     begin
+    #       friend = friends.sample
+    #     end while rand_friends.include? friend
+    #
+    #     rand_friends << friend
+    #   end
+    #
+    #   rand_friends
+    # end
+    random_selection(friends, n)
+  end
+
+  def random_photos( n = 6 )
+    random_selection(photos, n)
+  end
+
+  def random_selection(association, n = 6 )
+    rand_selection = []
+    count = association.count
 
     if count <= 6
-      friends
+      association
     else
       n.times do
         begin
-          friend = friends.sample
-        end while rand_friends.include? friend
+          selection = association.sample
+        end while rand_selection.include? selection
 
-        rand_friends << friend
+        rand_selection << selection
       end
 
-      rand_friends
+      rand_selection
     end
   end
 

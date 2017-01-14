@@ -1,9 +1,8 @@
 class Photo < ApplicationRecord
   include Commentable
-  
+
   belongs_to :owner, class_name: 'User'
 
-  # TODO populate every profile with default profile and cover photos
   has_one :profile_as_profile, foreign_key: :profile_photo_id,
                                class_name: "Profile"
   has_one :profile_as_cover,   foreign_key: :cover_photo_id,
@@ -20,7 +19,7 @@ class Photo < ApplicationRecord
 
   validates_attachment_content_type :user_photo, :content_type => /\Aimage\/.*\Z/
   validates :user_photo, presence: true
-
+  # u.photos.build(user_photo: File.open('app/assets/images/photos/1.jpeg'))
   def user
     owner
   end
