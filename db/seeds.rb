@@ -17,10 +17,6 @@ end
 
 puts "Creating Users"
 
-User.create( email: "gillan.jessica@gmail.com",
-             password: PASSWORD,
-             password_confirmation: PASSWORD )
-
 N.times do
   User.create( email: Faker::Internet.email,
                password: PASSWORD,
