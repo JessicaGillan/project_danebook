@@ -81,7 +81,7 @@ end
 me.friended_users << users
 me.photos.build(user_photo: File.open("app/assets/images/users/me.jpg"))
 me.save
-me.profile.profile_photo = user.photos.first
+me.profile.profile_photo = me.photos.first
 me.save
 
 users = User.all
