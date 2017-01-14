@@ -10,7 +10,7 @@ module LikeHelper
           "You like this."
         else
           (link_to "#{first_liker.profile.first_name} #{first_liker.profile.last_name}",
-                   user_profile_path( first_liker )).html_safe + " likes this."
+                   user_path( first_liker )).html_safe + " likes this."
         end
       else
         (you( likes.pluck(:liker_id) ) + likers( likes, first_liker )).html_safe
@@ -26,7 +26,7 @@ module LikeHelper
   def likers( likes, first_liker )
     if likes.count == 2
         "and " + (link_to "#{first_liker.profile.first_name} #{first_liker.profile.last_name}",
-               user_profile_path( first_liker )).html_safe + " like this."
+               user_path( first_liker )).html_safe + " like this."
     elsif likes.pluck(:liker_id).include? current_user.id
       "and #{likes.count - 1} others like this."
     else

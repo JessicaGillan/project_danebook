@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
 
     if @profile.update( profile_params )
       flash[:success] = "Profile updated!"
-      redirect_back(fallback_location: user_profile_path(@user) )
+      redirect_to user_profile_path @user
     else
 
     end

@@ -47,6 +47,22 @@ html {
   padding: 0;
 }
 
+// Top Profile pics
+.img-large {
+  height: 150px;
+  width: 150px;
+  margin: 5px 15px;
+  padding: 0;
+}
+
+// Image thumbnails left-align
+.img-thumbnail-left {
+  height: 100px;
+  width: 100px;
+  margin-top: 12px;
+  margin-bottom: 5px;
+  padding: 0;
+}
 .image {
   background-color: $bs-grey;
 }

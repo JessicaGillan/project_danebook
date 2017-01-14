@@ -19,7 +19,7 @@ class Photo < ApplicationRecord
 
   validates_attachment_content_type :user_photo, :content_type => /\Aimage\/.*\Z/
   validates :user_photo, presence: true
-  # u.photos.build(user_photo: File.open('app/assets/images/photos/1.jpeg'))
+  
   def user
     owner
   end

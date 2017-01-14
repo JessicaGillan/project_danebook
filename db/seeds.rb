@@ -22,10 +22,11 @@ N.times do
                password: PASSWORD,
                password_confirmation: PASSWORD )
 end
+users = User.all
 
 puts "Creating Profiles and Posts for each user, adding friends"
 
-User.all.each do |user|
+users.each do |user|
   user.create_profile( first_name: Faker::Name.first_name,
                       last_name:  Faker::Name.last_name,
                       birthday:   Faker::Date.between(30.years.ago, 10.years.ago),
@@ -42,12 +43,32 @@ User.all.each do |user|
     user.posts.create( body: Faker::ChuckNorris.fact )
   end
 
-  user.friended_users << User.all
+  user.friended_users << users
+end
+
+puts "adding profile photos to users"
+
+NUM_PROF_PHOTOS = 12
+users.each_with_index do |user, i|
+  user.photos.build(user_photo: File.open("app/assets/images/users/#{i%(NUM_PROF_PHOTOS)}.jpeg"))
+  user.save
+  user.profile.profile_photo = user.photos.first
+  user.save
+end
+
+puts "Adding photos to user's collections"
+NUM_PHOTOS = 14
+users.each_with_index do |user, i|
+  rand(N/2).times do |n|
+    user.photos.build(user_photo: File.open("app/assets/images/photos/#{i%(NUM_PHOTOS) + n}.jpeg"))
+  end
+
+  user.save
 end
 
 puts "Creating comments and likes on posts"
 
-user_ids = User.all.pluck(:id)
+user_ids = users.pluck(:id)
 Post.all.each do |post|
   rand(N/2).times do
     post.comments.create( author_id: user_ids.sample,

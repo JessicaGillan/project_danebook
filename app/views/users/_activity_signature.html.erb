@@ -4,6 +4,6 @@
                  user_path(user) %>
 
     <%= link_to user.name, user_path(user) %>
-    <p>Posted on <time datetime="<%= object.created_at %>"><%= object.created_at %></time></p>
+    <p>Posted <time datetime="<%= object.created_at %>"><%= time_ago_in_words(object.created_at) + " ago" %></time></p>
   </div>
 </div>

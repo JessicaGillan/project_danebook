@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: "foo@bar.com", subject: "Welcome"
+  default from: "TheDanes@book.com", subject: "Welcome"
 
   def welcome( id )
     @user = User.find_by_id( id )

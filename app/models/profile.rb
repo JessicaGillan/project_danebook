@@ -11,9 +11,9 @@ class Profile < ApplicationRecord
   DEFAULT_COVER_PHOTO_URL   = '/assets/large_missing3.jpg'
   DEFAULT_PROFILE_PHOTO_URL = 'thumb_missing.jpg'
 
-  def profile_photo_url( size_sym = :medium )
+  def profile_photo_url(size_sym = :thumb )
     if profile_photo
-      profile_photo.user_photo.url(10, size_sym)
+      profile_photo.user_photo.url(size_sym)
     else
       DEFAULT_PROFILE_PHOTO_URL
     end
