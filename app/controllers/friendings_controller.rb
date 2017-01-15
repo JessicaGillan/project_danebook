@@ -11,10 +11,10 @@ class FriendingsController < ApplicationController
 
     if current_user.friended_users << friending_recipient
       flash[:success] = "Friended #{friending_recipient.first_name}"
-      redirect_to friending_recipient
+      redirect_back(fallback_location: friending_recipient )
     else
       flash[:error] = "Sad day. Couldn't friend #{friending_recipient.first_name}"
-      redirect_to friending_recipient
+      redirect_back(fallback_location: current_user )
     end
   end
 

@@ -12,8 +12,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="#"><%= image_tag "danish_flag.gif", class: "navbar-brand img-circle" %></a>
-      <a class="navbar-brand" href="#">Danebook</a>
+      <%= image_tag "danish_flag.gif", class: "navbar-brand img-circle" %>
+      <%= link_to "Danebook", current_user, class: "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

@@ -17,19 +17,19 @@
           <div class="col-xs-12">
             <p>
               <span class="custom-info-label">Born on:</span>
-              <span class="pull-right">July 31st, 1980</span>
+              <span class="pull-right"><%= @user.profile.birthday %></span>
             </p>
             <p>
               <span class="custom-info-label">Went to school at:</span>
-              <span class="pull-right">Hogwarts</span>
+              <span class="pull-right"><%= @user.profile.college %></span>
             </p>
             <p>
               <span class="custom-info-label">Hometown:</span>
-              <span class="pull-right">Godrick's Hollow, England</span>
+              <span class="pull-right"><%= @user.profile.hometown %></span>
             </p>
             <p>
               <span class="custom-info-label">Currently Lives:</span>
-              <span class="pull-right">Everywhere</span>
+              <span class="pull-right"><%= @user.profile.current_location %></span>
             </p>
           </div>
         </div>
