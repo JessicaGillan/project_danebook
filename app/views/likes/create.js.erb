@@ -1,11 +1,11 @@
 console.log("Starting likes/create.js.erb");
 
 (function() {
-  console.log('<%= @likable.type %>');
-  console.log('<%= @likable.id %>');
+  var $likeLink = $("[data-type='<%= @likable.type %>'][data-id='<%= @likable.id %>'] .like-link").eq(0);
+  $likeLink.html("<%= j(render partial: 'shared/like_link', locals: { likable: @likable }) %>")
 
-  var $likes = $("[data-type='<%= @likable.type %>'][data-id='<%= @likable.id %>'] .likes");
-  $likes.text('<%= list_of_likes(@likable) %>')
+  var $likes = $("[data-type='<%= @likable.type %>'][data-id='<%= @likable.id %>'] .likes").eq(0);
+  $likes.html('<%= list_of_likes(@likable) %>')
 })();
 
 console.log("End of likes/create.js.erb");

@@ -1,5 +1,5 @@
 <% if likable.likes.pluck(:liker_id).include? current_user.id %>
-  <%= link_to [likable, :like], method: :delete, remote: true do %>
+  <%= link_to [likable, :like, id: 1], method: :delete, remote: true do %>
                                                   Unlike
                                                  <% end %>
 <% else %>

@@ -1,0 +1,11 @@
+console.log("Starting likes/destroy.js.erb");
+
+(function() {
+  var $likeLink = $("[data-type='<%= @likable.type %>'][data-id='<%= @likable.id %>'] .like-link").eq(0);
+  $likeLink.html("<%= j(render partial: 'shared/like_link', locals: { likable: @likable }) %>")
+
+  var $likes = $("[data-type='<%= @likable.type %>'][data-id='<%= @likable.id %>'] .likes").eq(0);
+  $likes.html('<%= list_of_likes(@likable) %>')
+})();
+
+console.log("End of likes/destroy.js.erb");

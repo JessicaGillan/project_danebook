@@ -16,8 +16,13 @@
     <div class="panel-footer">
 
       <!-- Action Links -->
-      <%= render partial: 'shared/like_link', locals: { likable: post } %>
-      <a href="#">Comment</a>
+      <span class="like-link">
+       <%= render partial: 'shared/like_link', locals: { likable: post } %>
+      </span>
+
+      <!-- TODO implement AJAX comment form show -->
+      <!-- <a href="#">Comment</a> -->
+
       <% if current_user.id == post.author.id %>
        <%= link_to user_post_path(post.author, post),
                              method: :delete,

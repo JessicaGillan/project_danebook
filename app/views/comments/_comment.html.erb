@@ -14,11 +14,11 @@
         <p><%= comment.body %></p>
 
         <!-- Links -->
-        <%= render partial: 'shared/like_link',
-                            locals:  { likable: comment } %>
-
-        <span class="likes"></span>
-        <%= list_of_likes( comment ) %>
+        <span class="like-link">
+          <%= render partial: 'shared/like_link',
+                               locals:  { likable: comment } %>
+        </span>
+        <span class="likes"><%= list_of_likes( comment ) %></span>
 
         <% if current_user.id == comment.author_id %>
             <%= link_to [comment.commentable, comment],
