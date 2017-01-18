@@ -19,9 +19,12 @@
       <%= render partial: 'shared/like_link', locals: { likable: post } %>
       <a href="#">Comment</a>
       <% if current_user.id == post.author.id %>
-       <%= link_to "Delete", user_post_path(post.author, post),
+       <%= link_to user_post_path(post.author, post),
                              method: :delete,
-                             class: "pull-right" %>
+                             class: "pull-right",
+                             remote: true do %>
+                              Delete
+                             <% end %>
       <% end %>
 
       <!-- Likes -->

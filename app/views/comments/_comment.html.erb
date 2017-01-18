@@ -1,5 +1,5 @@
 <% if comment.persisted? %>
-  <div class="custom-comment clearfix">
+  <div class="custom-comment clearfix" data-type="comment" data-id="<%= comment.id %>">
     <div class="row">
       <div class="col-xs-12">
         <%= link_to  image_tag(comment.author.profile.profile_photo_url(:thumb),
@@ -20,9 +20,12 @@
         <%= list_of_likes( comment ) %>
 
         <% if current_user.id == comment.author_id %>
-            <%= link_to "Delete", [comment.commentable, comment],
+            <%= link_to [comment.commentable, comment],
                         method: :delete,
-                        class: "pull-right" %>
+                        class: "pull-right",
+                        remote: true do %>
+                          Delete
+                        <% end %>
         <% end %>
       </div>
     </div>

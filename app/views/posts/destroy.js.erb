@@ -1,0 +1,10 @@
+console.log("Start of posts/destroy.js.erb");
+
+(function(){
+
+  var $post = $("[data-type='post'][data-id='<%= @post.id %>']");
+
+  $post.slideUp("normal", function() { $(this).remove(); } );
+})();
+
+console.log("End of posts/destroy.js.erb");

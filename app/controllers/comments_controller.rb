@@ -23,11 +23,15 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if @comment.destroy
-      redirect_back(fallback_location: current_user )
-    else
-      flash[:error] = "Whoops, we couldn't uncomment that. Try again."
-      redirect_back(fallback_location: current_user )
+    respond_to do |format|
+      if @comment.destroy
+        format.html { redirect_back(fallback_location: current_user ) }
+        format.js {}
+      else
+        flash[:error] = "Whoops, we couldn't uncomment that. Try again."
+        format.html { redirect_back(fallback_location: current_user ) }
+        format.js { head :none }
+      end
     end
   end
 

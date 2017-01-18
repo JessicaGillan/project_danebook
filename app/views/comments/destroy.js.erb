@@ -1,0 +1,9 @@
+console.log("Start of comments/destroy.js.erb");
+
+(function(){
+  var $comment = $("[data-type='comment'][data-id='<%= @comment.id %>']");
+
+  $comment.slideUp("normal", function() { $(this).remove(); } );
+})();
+
+console.log("End of comments/destroy.js.erb");
