@@ -6,7 +6,7 @@ DB.flashCtrl = (function($){
   var renderFlash = function renderFlash(flash) {
     $flashWrapper = $('#flash-wrapper')
     $flashWrapper.html(flash).slideDown(500);
-    setTimeout(_removeFlash, 1500);
+    setTimeout(_removeFlash, 2000);
   }
 
   var _removeFlash = function _removeFlash() {

@@ -9,13 +9,11 @@ class PostsController < ApplicationController
         format.html { redirect_to user_path current_user}
         format.js   { }
       else
-        flash[:error] = "Couldn't create post."
+        flash[:error] = "Couldn't create post. #{@post.errors.full_messages.join(", ")}"
 
         format.html { redirect_to user_path current_user }
 
-        # for JS, this renders an empty template
-        # (a.k.a.: you get no JavaScript back)
-        format.js { head :none }
+        format.js { }
       end
     end
   end

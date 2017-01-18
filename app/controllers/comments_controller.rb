@@ -15,9 +15,9 @@ class CommentsController < ApplicationController
         format.html { redirect_back(fallback_location: current_user ) }
         format.js   { }
       else
-        flash[:error] = "Whoops, we didn't get that comment saved. Try again."
+        flash[:error] = "Whoops, we didn't get that comment saved. #{@comment.errors.full_messages.join(", ")}"
         format.html { redirect_back(fallback_location: current_user ) }
-        format.js { head :none }
+        format.js { }
       end
     end
   end
@@ -30,11 +30,11 @@ class CommentsController < ApplicationController
       else
         flash[:error] = "Whoops, we couldn't uncomment that. Try again."
         format.html { redirect_back(fallback_location: current_user ) }
-        format.js { head :none }
+        format.js { }
       end
     end
   end
-  
+
   private
 
     def comment_params
