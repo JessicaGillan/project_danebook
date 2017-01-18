@@ -1,0 +1,13 @@
+console.log("Start of show.js.erb");
+
+(function(){
+  var comment = "<%= escape_javascript(render @comment) %>";
+  var $comment = $(comment);
+
+  $("#user-comments").prepend($comment);
+
+  $comment.hide();
+  $comment.slideDown(1000);
+})();
+
+console.log("End of show.js.erb");

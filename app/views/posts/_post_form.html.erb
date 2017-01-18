@@ -4,7 +4,7 @@
       <h4>Post</h4>
     </div>
 
-    <%= form_for [user, post] do |f| %>
+    <%= form_for [user, post], remote: true do |f| %>
       <div class="panel-body">
         <%= f.text_area :body, placeholder: "Tell the world something...",
                                class: "form-control" %>

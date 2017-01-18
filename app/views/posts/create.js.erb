@@ -1,0 +1,15 @@
+console.log("Start of show.js.erb");
+
+(function(){
+  var post = "<%= escape_javascript(render @post) %>";
+  var $post = $(post);
+
+  $("#user-posts").prepend($post);
+
+  // This wasn't working when hide before prepend, slide after
+  // TODO: figure out why.
+  $post.hide();
+  $post.slideDown(1000);
+})();
+
+console.log("End of show.js.erb");

@@ -29,8 +29,10 @@
         <%= list_of_likes( post ) %>
       </div>
 
-      <!-- Comments -->
-      <%= render post.comments %>
+      <div class="comments">
+        <!-- Comments -->
+        <%= render post.comments %>
+      </div>
 
       <!-- Comment Form -->
       <%= render partial: 'comments/comment_form',

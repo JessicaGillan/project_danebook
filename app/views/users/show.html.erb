@@ -55,9 +55,11 @@
     <%= render partial: 'posts/post_form',
                locals: { post: @post,
                          user: @user } %>
-
-    <!-- Posts -->
-    <%= render @user.posts %>
+                         
+    <div id="user-posts">
+      <!-- Posts -->
+      <%= render @user.posts %>
+    </div>
 
   </div><!-- right -->
 </section><!-- main content -->
