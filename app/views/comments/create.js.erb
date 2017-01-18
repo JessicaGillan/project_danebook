@@ -1,13 +1,18 @@
-console.log("Start of show.js.erb");
+console.log("Start of comments/create.js.erb");
 
 (function(){
+  $('#new_comment')[0].reset();
+
   var comment = "<%= escape_javascript(render @comment) %>";
   var $comment = $(comment);
+  var search = "[data-type='<%= @comment.commentable.type%>'][data-id='<%= @comment.commentable.id %>'] .comments"
 
-  $("#user-comments").prepend($comment);
+  var $comments = $(search);
+
+  $comments.append($comment);
 
   $comment.hide();
-  $comment.slideDown(1000);
+  $comment.slideDown(500);
 })();
 
-console.log("End of show.js.erb");
+console.log("End of comments/create.js.erb");

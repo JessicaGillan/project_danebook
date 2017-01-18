@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :likes,    :defaults => { likable: 'Post' },
                          only: [:index, :create, :destroy]
     resources :comments, :defaults => { commentable: 'Post'},
-                         only: [:index, :create, :destroy]
+                         only: [:create, :destroy]
   end
 
   resources :photos do

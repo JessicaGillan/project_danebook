@@ -1,28 +1,24 @@
 class CommentsController < ApplicationController
-  before_action :set_commentable,      only: [:create, :index, :destroy]
+  before_action :set_commentable,      only: [:create, :destroy]
   before_action :set_comment,          only: [:destroy]
   before_action :require_current_user, only: [:destroy]
 
-  # TODO: clean up repition, fix entire page reload on like???
-
-  def index
-  end
+  # TODO: clean up repition, fix entire page reload on like
 
   def create
-    if @commentable
-      @comment = @commentable.comments.build( comment_params )
-      @comment.author_id = current_user.id
+    @comment = @commentable.comments.build( comment_params )
+    @comment.author_id = current_user.id
 
+    respond_to do |format|
       if @comment.save
         queue_comment_email( @comment )
-        redirect_back(fallback_location: current_user )
+        format.html { redirect_back(fallback_location: current_user ) }
+        format.js   { }
       else
         flash[:error] = "Whoops, we didn't get that comment saved. Try again."
-        redirect_back(fallback_location: current_user )
+        format.html { redirect_back(fallback_location: current_user ) }
+        format.js { head :none }
       end
-    else
-      flash[:error] = "Whoops, we didn't get that comment saved. Try again."
-      redirect_back(fallback_location: current_user )
     end
   end
 
@@ -43,6 +39,7 @@ class CommentsController < ApplicationController
 
     def set_commentable
       @commentable = extract_commentable
+      redirect_back(fallback_location: current_user ) unless @commentable
     end
 
     def set_comment

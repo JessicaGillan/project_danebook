@@ -1,6 +1,6 @@
 <!-- Submit a Comment -->
 <div class="clearfix">
-  <%= form_for [commentable, comment] do |f| %>
+  <%= form_for [commentable, comment], remote: true do |f| %>
     <div class="form-group">
       <%= f.text_area :body, placeholder: "Write a comment...",
                              class: "form-control",

@@ -6,4 +6,7 @@ class Comment < ApplicationRecord
 
   validates :body, length: { minimum: 1 }
 
+  def type
+    "comment"
+  end
 end

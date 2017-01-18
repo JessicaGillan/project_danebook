@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   include Commentable
-  
+
   belongs_to :author, class_name: 'User'
 
   has_many :likes,    :as => :likable,     dependent: :destroy
@@ -10,5 +10,9 @@ class Post < ApplicationRecord
 
   def user
     author
+  end
+
+  def type
+    "post"
   end
 end

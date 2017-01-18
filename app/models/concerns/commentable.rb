@@ -27,4 +27,8 @@ module Commentable
   def user
     raise NotImplementedError
   end
+
+  def type
+    raise NotImplementedError
+  end
 end
