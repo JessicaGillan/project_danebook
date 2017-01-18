@@ -17,6 +17,7 @@
         <%= render partial: 'shared/like_link',
                             locals:  { likable: comment } %>
 
+        <span class="likes"></span>
         <%= list_of_likes( comment ) %>
 
         <% if current_user.id == comment.author_id %>

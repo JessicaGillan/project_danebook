@@ -1,0 +1,11 @@
+console.log("Starting likes/create.js.erb");
+
+(function() {
+  console.log('<%= @likable.type %>');
+  console.log('<%= @likable.id %>');
+
+  var $likes = $("[data-type='<%= @likable.type %>'][data-id='<%= @likable.id %>'] .likes");
+  $likes.text('<%= list_of_likes(@likable) %>')
+})();
+
+console.log("End of likes/create.js.erb");

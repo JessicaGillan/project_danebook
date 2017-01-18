@@ -1,32 +1,35 @@
 class LikesController < ApplicationController
   before_action :set_likable, only: [:create, :index, :destroy]
 
-  # TODO: clean up repition, fix entire page reload on like???
+  # TODO: clean up repition
 
   def create
-    if @likable
-      @likable.likes.build(liker_id: current_user.id )
+    @like = @likable.likes.build(liker_id: current_user.id )
 
-      if @likable.save
-        redirect_back(fallback_location: current_user )
+    respond_to do |format|
+      if @like.save
+        format.js {}
       else
         flash[:error] = "Whoops, we didn't get that like saved. Try again."
-        redirect_back(fallback_location: current_user )
+        format.js { head :none }
       end
-    else
-      flash[:error] = "Whoops, we didn't get that like saved. Try again."
-      redirect_back(fallback_location: current_user )
+
+      format.html { redirect_back(fallback_location: current_user ) }
     end
   end
 
   def destroy
     @like = @likable.likes.find_by_liker_id( current_user.id )
 
-    if @like && @like.destroy
-      redirect_back(fallback_location: current_user )
-    else
-      flash[:error] = "Whoops, we couldn't unlike that. Try again."
-      redirect_back(fallback_location: current_user )
+    respond_to do |format|
+      if @like && @like.destroy
+        format.js {}
+      else
+        flash[:error] = "Whoops, we couldn't unlike that. Try again."
+        format.js { head :none }
+      end
+
+      format.html { redirect_back(fallback_location: current_user ) }
     end
   end
 
@@ -34,6 +37,7 @@ class LikesController < ApplicationController
 
     def set_likable
       @likable = extract_likable
+      redirect_back(fallback_location: current_user ) unless @likable
     end
 
     def extract_likable
