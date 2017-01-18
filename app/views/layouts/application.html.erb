@@ -12,7 +12,10 @@
     <%= render navbar %>
 
     <main class="container" id="main_content">
-      <%= render 'shared/flash' %>
+      <div id="flash-wrapper">
+        <%= render 'shared/flash' %>
+      </div>
+      
       <%= yield %>
     </main>
 
