@@ -11,7 +11,7 @@ class LikesController < ApplicationController
         format.js {}
       else
         flash[:error] = "Whoops, we didn't get that like saved. Try again."
-        format.js { head :none }
+        format.js { }
       end
 
       format.html { redirect_back(fallback_location: current_user ) }
@@ -26,7 +26,7 @@ class LikesController < ApplicationController
         format.js {}
       else
         flash[:error] = "Whoops, we couldn't unlike that. Try again."
-        format.js { head :none }
+        format.js { }
       end
 
       format.html { redirect_back(fallback_location: current_user ) }

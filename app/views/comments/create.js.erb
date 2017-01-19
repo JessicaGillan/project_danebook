@@ -4,15 +4,10 @@ console.log("Start of comments/create.js.erb");
   $('#new_comment')[0].reset();
 
   var comment = "<%= escape_javascript(render @comment) %>";
-  var $comment = $(comment);
-  var search = "[data-type='<%= @comment.commentable.type%>'][data-id='<%= @comment.commentable.id %>'] .comments"
+  var type = <%= @comment.commentable.type%>;
+  var id = <%= @comment.commentable.id %>;
 
-  var $comments = $(search);
-
-  $comments.append($comment);
-
-  $comment.hide();
-  $comment.slideDown(500);
+  DB.posts.presenter.addCommentOn(type, id, comment);
 })();
 
 console.log("End of comments/create.js.erb");
