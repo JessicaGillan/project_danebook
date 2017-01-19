@@ -1,5 +1,7 @@
 var DB = DB || {};
 
+DB.posts = DB.posts || {};
+
 DB.posts.presenter = (function($){
   var $flashWrapper;
 

@@ -4,9 +4,9 @@ console.log("Start of comments/create.js.erb");
   $('#new_comment')[0].reset();
 
   var comment = "<%= escape_javascript(render @comment) %>";
-  var type = <%= @comment.commentable.type%>;
-  var id = <%= @comment.commentable.id %>;
-
+  var type = "<%= @comment.commentable.type %>";
+  var id = "<%= @comment.commentable.id %>";
+  
   DB.posts.presenter.addCommentOn(type, id, comment);
 })();
 
