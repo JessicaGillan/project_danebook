@@ -1,8 +1,8 @@
 console.log("Starting _flash.js.erb");
 
 (function() {
-  var flash = "<%= j(render partial: 'shared/flash.html') %>";
-
+  var flash = "<%= j(render partial: 'shared/flash.html.erb') %>";
+  console.log("flash", flash)
   DB.flashCtrl.renderFlash(flash);
 })();
 
