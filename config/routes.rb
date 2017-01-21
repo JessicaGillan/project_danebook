@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   get 'logout', to: 'sessions#destroy'
 
-  root 'users#new'
+  root 'sessions#new'
 
   resources :users do
     resource  :profile, only: [:show, :edit, :update]

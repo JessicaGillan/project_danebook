@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   skip_before_action :require_logged_in, except: [:destroy]
 
-  def new
+  def new  
   end
 
   def create

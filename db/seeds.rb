@@ -22,6 +22,11 @@ N.times do
                password: PASSWORD,
                password_confirmation: PASSWORD )
 end
+
+User.create(email: "test@example.com",
+            password: PASSWORD,
+            password_confirmation: PASSWORD)
+            
 users = User.all
 
 puts "Creating Profiles and Posts for each user, adding friends"
