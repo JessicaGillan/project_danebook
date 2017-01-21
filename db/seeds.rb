@@ -17,7 +17,7 @@ end
 
 puts "Creating Users"
 
-N.times do
+9.times do
   User.create( email: Faker::Internet.email,
                password: PASSWORD,
                password_confirmation: PASSWORD )
@@ -26,7 +26,7 @@ end
 User.create(email: "test@example.com",
             password: PASSWORD,
             password_confirmation: PASSWORD)
-            
+
 users = User.all
 
 puts "Creating Profiles and Posts for each user, adding friends"
@@ -48,7 +48,7 @@ users.each do |user|
     user.posts.create( body: Faker::ChuckNorris.fact )
   end
 
-  user.friended_users << users
+  user.friended_users << users.where.not(['id = ?', user.id])
 end
 
 puts "adding profile photos to users"
